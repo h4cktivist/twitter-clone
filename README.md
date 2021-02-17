@@ -39,7 +39,7 @@ python manage.py runserver
 
 Путь пишется с учетом того, что мы уже находимся в папке static, т.е если хотим подключить index.css из static, то link выглядит так: 
 
-`<link rel="stylesheet" type="text/css" href="{% static 'main/index.css' %}">`
+`<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">`
 
 Все.
 
