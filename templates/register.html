@@ -10,9 +10,16 @@
     <form method="POST">
         {% csrf_token %}
 
-        {{ form.as_p }}
+        <!-- Style this s**t as input fields, I dont actually know how to make a placeholder, so its ur job now. GL! -->
+
+        {{ form.username }}<br>
+        {{ form.email }}<br>
+        {{ form.password1 }}<br>
+        {{ form.password2 }}<br>
 
         <input type="submit" name="Create User" value="Register">
     </form>
+
+    <p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
 </body>
 </html>
