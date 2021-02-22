@@ -12,8 +12,10 @@
         <p>{{ p.text }}</p>
         <p>{{ p.date }}</p>
         {% if p.was_published_recently == True %}
-            <p>New post</p>
+            <p>New post!</p>
         {% endif %}
+
+        <a href="{% url 'detail' p.id %}">More</a>
     {% endfor %}
 
 </body>
