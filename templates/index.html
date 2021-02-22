@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+</head>
+<body>
+    <h1>Главная страница</h1>
+
+    {% for p in posts %}
+        <p>{{ p.user }}</p>
+        <p>{{ p.text }}</p>
+        <p>{{ p.date }}</p>
+        {% if p.was_published_recently == True %}
+            <p>New post!</p>
+        {% endif %}
+
+        <a href="{% url 'detail' p.id %}">More</a>
+    {% endfor %}
+
+</body>
+</html>
