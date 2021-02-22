@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробнее</title>
+</head>
+<body>
+    <h1>Подробнее</h1>
+
+    {% if post.was_published_recently == True %}
+        <p>New post!<p>
+    {% endif %}
+
+    <h2>{{ post.user }}</h2>
+    <p>{{ post.text }}</p>
+    <em>{{ post.date }}</em>
+
+    <form method="post" action="{% url 'comment' post.id%}">
+        {% csrf_token %}
+        <textarea required name="text" placeholder="Enter your comment"></textarea></br>
+        <button type="submit">Comment</button>
+    </form>
+
+
+    <h3>Comments</h3>
+
+    {% if comments %}
+        {% for c in comments %}
+            <p>
+                <strong>{{ c.user }}</strong>
+                <p>{{ c.text }}</p>
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>There're have no comments yet!</p>
+    {% endif %}
+</body> 
+</html>
