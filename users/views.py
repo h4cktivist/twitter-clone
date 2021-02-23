@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from .forms import CreateUserForm
+from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -9,7 +9,26 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def profile(request):
-    return render(request, 'profile.html')
+    if request.method == 'POST':
+        user_upd_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_upd_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_upd_form.is_valid() and profile_upd_form.is_valid():
+            user_upd_form.save()
+            profile_upd_form.save()
+
+            messages.success(request, 'Account information has been updated!')
+            return redirect('profile')
+
+    else:
+        user_upd_form = UserUpdateForm(instance=request.user)
+        profile_upd_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        'u_form': user_upd_form,
+        'p_form': profile_upd_form
+    }
+    return render(request, 'profile.html', context)
 
 
 def logIn(request):
