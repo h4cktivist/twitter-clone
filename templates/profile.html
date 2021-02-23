@@ -7,7 +7,13 @@
 <body>
     <h1>Profile page</h1>
 
-    <span>Hello, {{ request.user }}</span>
+    <img src="{{ user.profile.image.url }}"><br>
+
+    <span>Hello, {{ request.user }}</span><br>  
+    <span>{{ request.user.email }}</span>
+
+    <br><br>   
+
     <span><a href="{% url 'logout' %}">Log Out</a></span>
 </body>
 </html>
