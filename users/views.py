@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
+from django.http import Http404
 from django.contrib import messages
 
 from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
+
+from django.contrib.auth.models import User
+from .models import Profile
+from main.models import Post
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -29,6 +34,23 @@ def profile(request):
         'p_form': profile_upd_form
     }
     return render(request, 'profile.html', context)
+
+
+def otherProfile(request, u_id):
+    try:
+        u = User.objects.get(id=u_id)
+    except:
+        raise Http404('User not found')
+
+    p = Profile.objects.get(user=u)
+    posts = Post.objects.filter(user=u)
+
+    context = {
+        'user': u,
+        'user_profile': p,
+        'posts': posts
+    }
+    return render(request, 'otherprofile.html', context)
 
 
 def logIn(request):
