@@ -1,25 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'register.css' %}">
 </head>
 <body>
-    <h1>Register</h1>
+    <div class="poloska"></div>
+    
+    <h1>R<span id="anim">e</span>g<span id="anim">i</span>st<span id="anim">e</span>r</h1>
 
+    <div class="form_block">     
     <form method="POST">
         {% csrf_token %}
 
-        <!-- Style this s**t as input fields. GL! -->
+        <!-- Style this s**t as input fields. Yep, Ya zaebalsya :) -->
 
         {{ form.username }}<br>
         {{ form.email }}<br>
         {{ form.password1 }}<br>
         {{ form.password2 }}<br>
 
-        <input type="submit" name="Create User" value="Register">
+        
+            {% for field in form %}
+            {% if field.errors %}
+            <p id="text">{{ field.errors }}</p>
+            {% endif %}
+            {% endfor %}
+
+        <input class="button" type="submit" name="Create User" value="Register">
     </form>
 
-    <p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
+    <p class="Log_in">Already have an account? <a href="{% url 'login' %}">Log In</a></p>
+    </div>
 </body>
 </html>
