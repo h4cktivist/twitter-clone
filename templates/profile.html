@@ -7,7 +7,27 @@
 <body>
     <h1>Profile page</h1>
 
-    <span>Hello, {{ request.user }}</span>
+   {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+    <img src="{{ user.profile.image.url }}"><br>
+
+    <span>Hello, {{ request.user }}</span><br>  
+    <span>{{ request.user.email }}</span>
+
+    <br><br>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ u_form.as_p }}
+        {{ p_form.as_p }}
+
+        <button type="submit">Update</button>
+    </form>
+
+    <br><br>
     <span><a href="{% url 'logout' %}">Log Out</a></span>
 </body>
 </html>

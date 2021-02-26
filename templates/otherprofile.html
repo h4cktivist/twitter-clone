@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.username }}'s profile</title>
+</head>
+<body>
+
+    <h1>{{ user.username }}</h1>
+
+   {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+    <img src="{{ user_profile.user.profile.image.url }}"><br>
+
+    <span>{{ user.email }}</span>
+
+    <h2>Posts by {{ user.username }}</h2>
+    {% for p in posts %}
+        <p>{{ p.user }}</p>
+        <p>{{ p.text }}</p>
+        <p>{{ p.date }}</p>
+        {% if p.was_published_recently == True %}
+            <p>New post!</p>
+        {% endif %}
+
+        <a href="{% url 'detail' p.id %}">More</a>
+    {% endfor %}
+
+
+</body>
+</html>
