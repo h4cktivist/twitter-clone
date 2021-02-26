@@ -1,23 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'register.css' %}">
 </head>
 <body>
-    <h1>Login</h1>
+    <div class="poloska"></div>
+
+    <h1>L<span id="anim">o</span>g<span id="anim">i</span>n</h1>
 
     {% for message in messages %}
+    <div id="msg">
         <p>{{ message }}</p>
+        <div class="progress"></div>
+    </div>
     {% endfor %}
+
+ <div class="form_block">
 
     <form method="POST">
         {% csrf_token %}
         <input type="text" name="username" placeholder="Enter username"><br>
         <input type="password" name="password" placeholder="Enter password"><br>
-        <input type="submit" value="Log In"><br>
+        <input class="button" type="submit" value="Log In"><br>
     </form>
 
-    <p>Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+    <p class="Log_in">Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+
+    </div>
+
+    <script src="{% static 'reg_log.js' %}"></script>
 </body>
 </html>
