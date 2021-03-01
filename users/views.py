@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.http import Http404
 from django.contrib import messages
 
@@ -36,21 +36,45 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
-def otherProfile(request, u_id):
+def otherProfile(request, u_name):
     try:
-        u = User.objects.get(id=u_id)
+        u = User.objects.get(username=u_name)
     except:
         raise Http404('User not found')
 
     p = Profile.objects.get(user=u)
     posts = Post.objects.filter(user=u)
+    my_profile = Profile.objects.get(user=request.user)
+
+    if p.user in my_profile.following.all():
+        follow = True
+    else:
+        follow = False
 
     context = {
         'user': u,
         'user_profile': p,
-        'posts': posts
+        'posts': posts,
+        'follow': follow
     }
     return render(request, 'otherprofile.html', context)
+
+
+def follow_unfollow(request):
+    if request.method == 'POST':
+        my_profile = Profile.objects.get(user=request.user)
+        pk = request.POST.get('profile_pk')
+        obj = Profile.objects.get(pk=pk)
+
+        if obj.user in my_profile.following.all():
+            my_profile.following.remove(obj.user)
+        else:
+            if obj.user != my_profile.user:
+                my_profile.following.add(obj.user)
+            else:
+                messages.info(request, 'You can not follow yourself')
+
+        return redirect(reverse('otherprofile', args=(obj.user.username,)))
 
 
 def logIn(request):

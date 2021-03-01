@@ -8,13 +8,31 @@
 
     <h1>{{ user.username }}</h1>
 
-   {% for message in messages %}
-        <p>{{ message }}</p>
-    {% endfor %}
 
     <img src="{{ user_profile.user.profile.image.url }}"><br>
 
     <span>{{ user.email }}</span>
+    <br>
+    <span>Bio: {{ user_profile.bio }}</span>
+
+
+    {% for msg in messages %}
+        <p>{{ msg }}</p>
+    {% endfor %}
+
+    {% if follow %}
+        <form method="post" action="{% url 'follow_unfollow' %}">
+            {% csrf_token %}
+            <input type="hidden" name="profile_pk" value="{{ user_profile.pk }}">
+            <button type="submit">Unfollow</button>
+        </form>
+    {% else %}
+        <form method="post" action="{% url 'follow_unfollow'  %}">
+            {% csrf_token %}
+            <input type="hidden" name="profile_pk" value="{{ user_profile.pk }}">
+            <button type="submit">Follow</button>
+        </form>
+    {% endif %}
 
     <h2>Posts by {{ user.username }}</h2>
     {% for p in posts %}

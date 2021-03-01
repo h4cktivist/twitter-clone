@@ -7,6 +7,8 @@ from PIL import Image
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='profile_pics/default.jpg', upload_to='profile_pics')
+    bio = models.TextField(default='Apparently, this user prefers to keep an air of mystery about them.')
+    following = models.ManyToManyField(User, related_name='following', blank=True)
 
     def __str__(self):
         return f'{self.user.username} profile'
