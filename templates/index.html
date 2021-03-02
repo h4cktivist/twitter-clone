@@ -15,6 +15,17 @@
             <p>New post!</p>
         {% endif %}
 
+        <form method="post" action="{% url 'like_post' %}">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ p.id }}">
+            {% if user not in p.liked.all %}
+                <button type="submit">Like</button>
+            {% else %}
+                <button type="submit">Unlike</button>
+            {% endif %}
+        </form>
+        <strong>{{ p.likes }}</strong>
+
         <a href="{% url 'detail' p.id %}">More</a>
     {% endfor %}
 
