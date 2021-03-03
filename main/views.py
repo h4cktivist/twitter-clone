@@ -1,14 +1,25 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import Http404
+from django.utils import timezone
 
 from .models import Post, Like
+from .forms import PostCreationForm
 
 
 def index(request):
-    posts = Post.objects.all()
+    if request.method == 'POST':
+        form = PostCreationForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.date = timezone.now()
+            post.save()
 
-    context = {'posts': posts}
+    posts = Post.objects.all()
+    form = PostCreationForm()
+
+    context = {'posts': posts, 'form': form}
     return render(request, 'index.html', context)
 
 

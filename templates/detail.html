@@ -11,7 +11,7 @@
         <p>New post!<p>
     {% endif %}
 
-    <h2>{{ post.user }}</h2>
+    <a href="{% url 'otherprofile' post.user.username %}">{{ post.user }}</a>
     <p>{{ post.text }}</p>
     <em>{{ post.date }}</em>
 
@@ -27,7 +27,7 @@
     {% if comments %}
         {% for c in comments %}
             <p>
-                <strong>{{ c.user }}</strong>
+                <a href="{% url 'otherprofile' post.user.username %}"><strong>{{ c.user }}</strong></a>
                 <p>{{ c.text }}</p>
             </p>
         {% endfor %}
