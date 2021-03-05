@@ -1,10 +1,11 @@
 # twitter-clone
 
 
-## Установка Django (Да, я знаю, что надоел, используя новый фреймворк с новым проектом):
+## Установка Django и Django REST framework (Да, я знаю, что надоел, используя новый фреймворк с новым проектом):
 
 ```sh 
 pip install django
+pip install djangorestframework
 ```
 Все.
 
