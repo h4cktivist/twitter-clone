@@ -14,7 +14,8 @@
     <img src="{{ user.profile.image.url }}"><br>
 
     <span>Hello, {{ request.user }}</span><br>  
-    <span>{{ request.user.email }}</span>
+    <span>{{ request.user.email }}</span><br>
+    <span>You are following {{ user.profile.following_count }} users</span>
 
     <br><br>
 

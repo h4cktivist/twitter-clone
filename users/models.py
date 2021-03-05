@@ -10,6 +10,10 @@ class Profile(models.Model):
     bio = models.TextField(default='Apparently, this user prefers to keep an air of mystery about them.')
     following = models.ManyToManyField(User, related_name='following', blank=True)
 
+    @property
+    def following_count(self):
+        return self.following.all().count()
+
     def __str__(self):
         return f'{self.user.username} profile'
 
