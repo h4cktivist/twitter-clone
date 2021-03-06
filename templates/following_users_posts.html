@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Following Users Posts</title>
+</head>
+<body>
+    <h1>Posts from users you following</h1>
+
+    <!-- Posts -->
+    {% for p in posts %}
+        <a href="{% url 'otherprofile' p.user.username %}"><p>{{ p.user }}</p></a>
+        <p>{{ p.text }}</p>
+        <p>{{ p.date }}</p>
+        {% if p.was_published_recently == True %}
+            <p>New post!</p>
+        {% endif %}
+
+        <!-- Like button form -->
+        <form method="post" action="{% url 'like_post' %}">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ p.id }}">
+            {% if user not in p.liked.all %}
+                <button type="submit">Like</button>
+            {% else %}
+                <button type="submit">Unlike</button>
+            {% endif %}
+        </form>
+        <strong>{{ p.likes }}</strong>
+
+        <a href="{% url 'detail' p.id %}">More</a>
+    {% endfor %}
+
+</body>
+</html>

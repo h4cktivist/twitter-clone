@@ -23,6 +23,21 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+def following_users_posts(request):
+    users = request.user.profile.following.all()
+    posts = []
+
+    for u in users:
+        post = Post.objects.get(user=u)
+        posts.append(post)
+
+    context = {
+        'posts': posts
+    }
+
+    return render(request, 'following_users_posts.html', context)
+
+
 def detail(request, post_id):
     try:
         p = Post.objects.get(id=post_id)
