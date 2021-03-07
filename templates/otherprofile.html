@@ -23,17 +23,19 @@
         <p>{{ msg }}</p>
     {% endfor %}
 
-    <form method="post" action="{% url 'follow_unfollow'  %}" class="follow-unfollow-form" id="{{ user_profile.pk }}">
-        {% csrf_token %}
-        <input type="hidden" name="profile_pk" value="{{ user_profile.pk }}">
-        <button type="submit" class="btn{{ user_profile.pk }}">
-            {% if follow %}
-                Unfollow
-            {% else %}
-                Follow
-            {% endif %}
-        </button>
-    </form>
+    {% if request.user != user %}
+        <form method="post" action="{% url 'follow_unfollow'  %}" class="follow-unfollow-form" id="{{ user_profile.pk }}">
+            {% csrf_token %}
+            <input type="hidden" name="profile_pk" value="{{ user_profile.pk }}">
+            <button type="submit" class="btn{{ user_profile.pk }}">
+                {% if follow %}
+                    Unfollow
+                {% else %}
+                    Follow
+                {% endif %}
+            </button>
+        </form>
+    {% endif %}
 
     <h2>Posts by {{ user.username }}</h2>
     {% for p in posts %}
