@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.utils import timezone
+
+from django.contrib.auth.decorators import login_required
 
 from .models import Post, Like
 from .forms import PostCreationForm
@@ -23,6 +25,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+@login_required(login_url='login')
 def following_users_posts(request):
     users = request.user.profile.following.all()
     posts = []
@@ -83,7 +86,14 @@ def like_post(request):
                 like.value = 'Unlike'
             else:
                 like.value = 'Like'
+        else:
+            like.save()
 
-        like.save()
+        data = {
+            'value:': like.value,
+            'likes': post.likes
+        }
+
+        return JsonResponse(data, safe=False)
 
     return redirect('index')

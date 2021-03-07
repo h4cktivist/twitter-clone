@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Главная</title>
+    <title>Index</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'like.js' %}" defer></script>
 </head>
 <body>
     <h1>Main page</h1>
@@ -28,16 +31,18 @@
         {% endif %}
 
         <!-- Like button form -->
-        <form method="post" action="{% url 'like_post' %}">
+        <form method="post" action="{% url 'like_post' %}" class="like-form" id="{{ p.id }}">
             {% csrf_token %}
             <input type="hidden" name="post_id" value="{{ p.id }}">
-            {% if user not in p.liked.all %}
-                <button type="submit">Like</button>
-            {% else %}
-                <button type="submit">Unlike</button>
-            {% endif %}
+            <button type="submit" class="like-btn{{ p.id }}">
+                {% if user not in p.liked.all %}
+                    Like
+                {% else %}
+                    Unlike
+                {% endif %}
+            </button>
         </form>
-        <strong>{{ p.likes }}</strong>
+        <div class="like-count{{ p.id }}">{{ p.likes }}</div>
 
         <a href="{% url 'detail' p.id %}">More</a>
     {% endfor %}
