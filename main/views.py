@@ -89,11 +89,4 @@ def like_post(request):
         else:
             like.save()
 
-        data = {
-            'value:': like.value,
-            'likes': post.likes
-        }
-
-        return JsonResponse(data, safe=False)
-
     return redirect('index')

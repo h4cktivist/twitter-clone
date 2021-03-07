@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ user.username }}'s profile</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'follow_unfollow.js' %}" defer></script>
 </head>
 <body>
 
@@ -20,19 +23,17 @@
         <p>{{ msg }}</p>
     {% endfor %}
 
-    {% if follow %}
-        <form method="post" action="{% url 'follow_unfollow' %}">
-            {% csrf_token %}
-            <input type="hidden" name="profile_pk" value="{{ user_profile.pk }}">
-            <button type="submit">Unfollow</button>
-        </form>
-    {% else %}
-        <form method="post" action="{% url 'follow_unfollow'  %}">
-            {% csrf_token %}
-            <input type="hidden" name="profile_pk" value="{{ user_profile.pk }}">
-            <button type="submit">Follow</button>
-        </form>
-    {% endif %}
+    <form method="post" action="{% url 'follow_unfollow'  %}" class="follow-unfollow-form" id="{{ user_profile.pk }}">
+        {% csrf_token %}
+        <input type="hidden" name="profile_pk" value="{{ user_profile.pk }}">
+        <button type="submit" class="btn{{ user_profile.pk }}">
+            {% if follow %}
+                Unfollow
+            {% else %}
+                Follow
+            {% endif %}
+        </button>
+    </form>
 
     <h2>Posts by {{ user.username }}</h2>
     {% for p in posts %}
