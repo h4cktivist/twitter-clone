@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import Http404
 from django.utils import timezone
+from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 
@@ -54,6 +55,35 @@ def detail(request, post_id):
         'comments': comments
     }
     return render(request, 'detail.html', context)
+
+
+def edit(request, post_id):
+    if request.method == 'POST':
+        p = Post.objects.get(id=post_id)
+        form = PostCreationForm(request.POST, request.FILES, instance=p)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Post has successfully edited')
+            return redirect(reverse('detail', args=(p.id,)))
+
+    else:
+        p = Post.objects.get(id=post_id)
+        form = PostCreationForm(instance=p)
+
+    context = {
+        'post': p,
+        'form': form
+    }
+    return render(request, 'edit.html', context)
+
+
+def delete_post(request, post_id):
+    p = Post.objects.get(id=post_id)
+    p.delete()
+
+    messages.success(request, 'Post has successfully deleted')
+    return redirect('index')
 
 
 def leave_comment(request, post_id):

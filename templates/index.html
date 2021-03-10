@@ -10,6 +10,10 @@
 <body>
     <h1>Main page</h1>
 
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
     <!-- Post creation form -->
     <form enctype="multipart/form-data" method="post">
         <label>
