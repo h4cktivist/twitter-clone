@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Подробнее</title>
+    <title>More</title>
 </head>
 <body>
-    <h1>Подробнее</h1>
+    <h1>More</h1>
+
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
 
     {% if post.was_published_recently == True %}
         <p>New post!<p>
@@ -18,7 +23,14 @@
     {% endif %}
     <em>{{ post.date }}</em>
 
-    <form method="post" action="{% url 'comment' post.id%}">
+    <br>
+
+    {% if request.user == post.user %}
+        <a href="{% url 'edit' post.id %}">Edit</a>
+        <a href="{% url 'delete' post.id %}">Delete</a>
+    {% endif %}
+
+    <form method="post" action="{% url 'comment' post.id %}">
         {% csrf_token %}
         <textarea required name="text" placeholder="Enter your comment"></textarea></br>
         <button type="submit">Comment</button>

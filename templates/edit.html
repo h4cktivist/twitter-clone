@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit post</title>
+</head>
+<body>
+    <h1>Edit post</h1>
+
+    <p>{{ post.text }}</p>
+    {% if post.image %}
+        <img height="500" width="500" src="{{ post.image.url }}"><br>
+    {% endif %}
+    <em>{{ post.date }}</em>
+
+
+    <h2>Edit your post</h2>
+
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+
+        {{ form.text }}<br>
+        {{ form.image }}<br>
+        <button type="submit">Save</button>
+    </form>
+
+</body>
+</html>
