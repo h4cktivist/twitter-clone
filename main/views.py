@@ -11,7 +11,7 @@ from .forms import PostCreationForm
 
 def index(request):
     if request.method == 'POST':
-        form = PostCreationForm(request.POST)
+        form = PostCreationForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user

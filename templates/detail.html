@@ -13,6 +13,7 @@
 
     <a href="{% url 'otherprofile' post.user.username %}">{{ post.user }}</a>
     <p>{{ post.text }}</p>
+    <img src="{{ post.image.url }}"><br>
     <em>{{ post.date }}</em>
 
     <form method="post" action="{% url 'comment' post.id%}">
