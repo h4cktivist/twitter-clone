@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import Http404, JsonResponse
+from django.http import Http404
 from django.utils import timezone
 
 from django.contrib.auth.decorators import login_required

@@ -27,7 +27,7 @@
         <a href="{% url 'otherprofile' p.user.username %}"><p>{{ p.user }}</p></a>
         <p>{{ p.text }}</p>
         {% if p.image %}
-            <img src="{{ p.image.url }}">
+            <img height="500" width="500" src="{{ p.image.url }}">
         {% endif %}
         <p>{{ p.date }}</p>
         {% if p.was_published_recently %}

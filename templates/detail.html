@@ -14,7 +14,7 @@
     <a href="{% url 'otherprofile' post.user.username %}">{{ post.user }}</a>
     <p>{{ post.text }}</p>
     {% if post.image %}
-        <img src="{{ post.image.url }}"><br>
+        <img height="500" width="500" src="{{ post.image.url }}"><br>
     {% endif %}
     <em>{{ post.date }}</em>
 
