@@ -1,0 +1,175 @@
+body {
+  background-color: #000000;
+  margin: 0 auto;
+  color: white;
+}
+
+@font-face {
+  font-family: "ZIX";
+  src: url("/static/fonts/ZIX.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+.poloska {
+  width: 50%;
+  height: 40px;
+  margin: 0 auto;
+  text-align: left;
+  border: solid 1px #939393;
+  border-bottom: none;
+}
+.poloska span {
+  font-size: 20px;
+  font-family: "ZIX";
+  position: relative;
+  top: 10px;
+  color: white;
+  margin-left: 10px;
+}
+
+.post_create_form form {
+  resize: none;
+  color: white;
+}
+.post_create_form form button {
+  margin-top: 10px;
+}
+
+#form_block {
+  width: 50%;
+  margin: 0 auto;
+  border: solid 1px #939393;
+  border-left: none;
+  transition-duration: 1s;
+}
+
+#txtarea {
+  resize: none;
+  overflow: hidden;
+  transition-duration: 1s;
+  border: none;
+  margin-top: 10px;
+  background: none;
+  color: white;
+  outline: none;
+}
+
+.crp_button {
+  height: 30px;
+  width: 120px;
+  float: right;
+  color: white;
+  background-color: #0075FF;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  font-family: "ZIX";
+  margin-right: 10px;
+}
+
+.user_menu {
+  width: 24.8%;
+  height: 99.7%;
+  border: solid 1px #939393;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.user_trends {
+  width: 24.8%;
+  height: 99.7%;
+  border: solid 1px #939393;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+.post_block {
+  width: 49.9%;
+  margin: 0 auto;
+}
+
+.post {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.post_info a {
+  color: white;
+  text-decoration: none;
+}
+.post_info a:active {
+  color: white;
+  text-decoration: none;
+}
+.post_info a:visited {
+  color: white;
+  text-decoration: none;
+}
+.post_info a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+#post_username {
+  position: relative;
+  left: 0px;
+  margin-left: 20px;
+}
+
+#post_date {
+  margin-left: 20px;
+}
+
+#post_text {
+  margin-left: 20px;
+}
+
+#post_image {
+  display: block;
+  margin: 0 auto;
+  min-width: 60px;
+  width: 300px;
+  max-width: 1000px;
+  min-height: 60px;
+  height: 120px;
+  max-height: 300px;
+}
+
+#more {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+#more:active {
+  color: white;
+  text-decoration: none;
+}
+#more:visited {
+  color: white;
+  text-decoration: none;
+}
+#more:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+#like_btn {
+  margin-left: 20px;
+  background-color: #0075FF;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  width: 60px;
+}
+#like_btn span {
+  color: white;
+}
+
+#like_color {
+  color: "#";
+}
