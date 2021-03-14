@@ -12,12 +12,15 @@ from .forms import PostCreationForm
 
 def index(request):
     if request.method == 'POST':
-        form = PostCreationForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.user = request.user
-            post.date = timezone.now()
-            post.save()
+        try:
+            form = PostCreationForm(request.POST, request.FILES)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.user = request.user
+                post.date = timezone.now()
+                post.save()
+        except ValueError:
+            return redirect('login')
 
     posts = Post.objects.all()
     form = PostCreationForm()
@@ -57,6 +60,7 @@ def detail(request, post_id):
     return render(request, 'detail.html', context)
 
 
+@login_required(login_url='login')
 def edit(request, post_id):
     if request.method == 'POST':
         p = Post.objects.get(id=post_id)
@@ -78,6 +82,7 @@ def edit(request, post_id):
     return render(request, 'edit.html', context)
 
 
+@login_required(login_url='login')
 def delete_post(request, post_id):
     p = Post.objects.get(id=post_id)
     p.delete()
@@ -86,6 +91,7 @@ def delete_post(request, post_id):
     return redirect('index')
 
 
+@login_required(login_url='login')
 def leave_comment(request, post_id):
     try:
         p = Post.objects.get(id=post_id)
