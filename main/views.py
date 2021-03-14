@@ -39,7 +39,7 @@ def following_users_posts(request):
         'posts': posts
     }
 
-    return render(request, 'following_users_posts.html', context)
+    return render(request, 'index.html', context)
 
 
 def detail(request, post_id):
