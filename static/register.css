@@ -4,6 +4,12 @@ body {
   cursor: default;
 }
 
+@font-face {
+  font-family: "ZIX";
+  src: url("/static/fonts/ZIX.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
 .poloska {
   width: 100%;
   height: 30px;

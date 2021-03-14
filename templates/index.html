@@ -3,57 +3,135 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>Index</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script type="text/javascript" src="{% static 'like.js' %}" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+
 </head>
+
 <body>
-    <h1>Main page</h1>
+
+    <div class="poloska">
+
+    <span>Main page</span>
+
+</div>
 
     {% for message in messages %}
-        <p>{{ message }}</p>
+        <p>{{ message }}</p> <!-- Уведомление о новом посте -->
     {% endfor %}
 
     <!-- Post creation form -->
+    <div class="post_create_form">
+
     <form enctype="multipart/form-data" method="post">
+
+        <div id="form_block" style="height: 125px; max-height: 205px;">
         <label>
             {% csrf_token %}
-
             {{ form.text }}<br>
-            {{ form.image }}<br>
-            <button type="submit">Create post</button>
+            {{ form.image }}              
+            <button type="submit" class="crp_button">Create post</button>
         </label>
+
+        </div>
+
+        <script type="text/javascript">
+            let txtarea = document.getElementById('txtarea');
+            let formblock = document.getElementById('form_block');
+
+            function AutoSize(){
+                if (txtarea.value.length >= 356){
+                    txtarea.style.height = parseInt(txtarea.style.height) + 90 + "px";
+                    formblock.style.height = parseInt(formblock.style.height) + 80 + "px";
+                }
+                else if (txtarea.value.length == 0){
+                    txtarea.style.height = 60 + "px";
+                    formblock.style.height = 125 + "px";
+                }
+            }
+        </script>
     </form>
+    </div>
 
+    <div class="user_menu"></div>
 
+    <div class="user_trends"></div>
+
+    <div class="post_block">
     <!-- Posts -->
+
     {% for p in posts %}
-        <a href="{% url 'otherprofile' p.user.username %}"><p>{{ p.user }}</p></a>
-        <p>{{ p.text }}</p>
+
+        <div class="post_info">
+
+            <br>
+
+        <a href="{% url 'otherprofile' p.user.username %}" id="post_username">{{ p.user }}</a>
+        <span id="post_date">{{ p.date }}</span>
+
+        <br>
+        <br>
+
+        <span id="post_text">{{ p.text }}</span>
+
+        <br>
+        <br>
+        
+        <a href="{% url 'detail' p.id %}" id="more">More</a>
+
+        <br>
+
+        </div>
+
         {% if p.image %}
-            <img height="500" width="500" src="{{ p.image.url }}">
+
+            <img id="post_image" src="{{ p.image.url }}">
+
         {% endif %}
-        <p>{{ p.date }}</p>
-        {% if p.was_published_recently %}
+
+
+       <!-- {% if p.was_published_recently %} 
+
             <p>New post!</p>
+
         {% endif %}
+
+        -->
 
         <!-- Like button form -->
+
+        <br>
+
         <form method="post" action="{% url 'like_post' %}" class="like-form" id="{{ p.id }}">
+
             {% csrf_token %}
+
             <input type="hidden" name="post_id" value="{{ p.id }}">
-            <button type="submit" class="like-btn{{ p.id }}">
+
+            <button type="submit" class="like-btn{{ p.id }}" id="like_btn">
+
                 {% if user not in p.liked.all %}
                     Like
                 {% else %}
                     Unlike
                 {% endif %}
             </button>
-        </form>
-        <div class="like-count{{ p.id }}">{{ p.likes }}</div>
+             <span id="like_color">♥</span>
+            <span class="like-count{{ p.id }}">{{ p.likes }}</span>
 
-        <a href="{% url 'detail' p.id %}">More</a>
+        </form>
+
+        <hr>
+
     {% endfor %}
+
+    </div>
 
 </body>
 </html>
