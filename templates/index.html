@@ -10,13 +10,18 @@
 
     <script type="text/javascript" src="{% static 'like.js' %}" defer></script>
 
+    <script type="text/javascript" src="{% static 'sneak_block.js' %}" defer></script>
+
     <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div class="poloska">
+    <div id="poloska">
 
     <span>Main page</span>
 
@@ -38,6 +43,7 @@
                 {{ form.text }}<br>
                 {{ form.image }}
                 <button type="submit" class="crp_button">Create post</button>
+
             </label>
 
             </div>
@@ -61,39 +67,82 @@
         </div>
     {% endif %}
 
-    <div class="user_menu"></div>
+    <br>
 
-    <div class="user_trends"></div>
+    <div id="user_menu">
 
-    <div class="post_block">
+    <div id="menu_btn" onclick="openMenu()">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+        <ul>
+            <li>Menu</li>
+            <li><a href="#" style="color: #0075FF;">Home</a></li>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Followers</a></li>
+        </ul>
+
+        <div id="user_info">
+
+            <img class="user_info_avatar" src="{{ request.user.profile.image.url }}">
+
+            <a href="#" id="user_info_name">{{ request.user.username }}</a>
+
+        </div>
+
+    </div>
+
+    <div id="user_trends">
+
+        <form action="" method="get" id="form_search">
+
+        <div id="form_search_block">  
+             
+             <input id="input_search" placeholder="Искать здесь..." type="search">
+
+            <button id="button_search" type="submit">Поиск</button>
+
+        </div>
+
+        </form>
+    </div>
+
+    <div id="post_block">
     <!-- Posts -->
 
     {% for p in posts %}
 
         <div class="post_info">
 
-            <br>
+                <img class="post_user_avatar" src="{{ p.user.profile.image.url }}">
 
-        <a href="{% url 'otherprofile' p.user.username %}" id="post_username">{{ p.user }}</a>
+                <a href="{% url 'otherprofile' p.user.username %}" id="post_username">{{ p.user }}</a>
+
+
         <span id="post_date">{{ p.date }}</span>
 
         <br>
-        <br>
 
         <span id="post_text">{{ p.text }}</span>
-
-        <br>
-        <br>
         
-        <a href="{% url 'detail' p.id %}" id="more">More</a>
+        <a href="{% url 'detail' p.id %}" id="more">...More</a>
 
         <br>
 
         </div>
 
+        <br>
+
         {% if p.image %}
+        <div class="post_img_container">
 
             <img id="post_image" src="{{ p.image.url }}">
+
+        </div>
 
         {% endif %}
 
