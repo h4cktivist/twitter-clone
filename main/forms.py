@@ -10,4 +10,11 @@ class PostCreationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['text'].widget.attrs.update({'placeholder': 'Share something about'})
+        attrs = {
+            'id': 'txtarea',
+            'onKeyUp': "AutoSize();",
+            'style': 'height: 60px; max-height: 140px; width: 99%;',
+            'maxlength': '800',
+            'placeholder': 'Share something about'
+        }
+        self.fields['text'].widget.attrs.update(attrs)
