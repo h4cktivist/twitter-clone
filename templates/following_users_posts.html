@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Following Users Posts</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'like.js' %}" defer></script>
+</head>
+<body>
+    <h1>Posts from users you following</h1>
+
+    <!-- Posts -->
+    {% for p in posts %}
+        <a href="{% url 'otherprofile' p.user.username %}"><p>{{ p.user }}</p></a>
+        <p>{{ p.text }}</p>
+        <p>{{ p.date }}</p>
+        {% if p.was_published_recently == True %}
+            <p>New post!</p>
+        {% endif %}
+
+        <!-- Like button form -->
+        <form method="post" action="{% url 'like_post' %}" class="like-form" id="{{ p.id }}">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ p.id }}">
+            <button type="submit" class="like-btn{{ p.id }}">
+                {% if user not in p.liked.all %}
+                    Like
+                {% else %}
+                    Unlike
+                {% endif %}
+            </button>
+        </form>
+        <div class="like-count{{ p.id }}">{{ p.likes }}</div>
+
+        <a href="{% url 'detail' p.id %}">More</a>
+    {% endfor %}
+
+</body>
+</html>
