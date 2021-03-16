@@ -36,6 +36,7 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 
+@login_required(login_url='login')
 def otherProfile(request, u_name):
     try:
         u = User.objects.get(username=u_name)

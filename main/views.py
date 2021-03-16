@@ -104,6 +104,7 @@ def leave_comment(request, post_id):
     return redirect(reverse('detail', args=(p.id,)))
 
 
+@login_required(login_url='login')
 def like_post(request):
     user = request.user
     if request.method == 'POST':

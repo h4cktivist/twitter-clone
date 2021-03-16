@@ -6,9 +6,10 @@
 
     <title>Index</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script type="text/javascript" src="{% static 'like.js' %}" defer></script>
+    {% if request.user.username %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'like.js' %}" defer></script>
+    {% endif %}
 
     <script type="text/javascript" src="{% static 'sneak_block.js' %}" defer></script>
 
@@ -81,18 +82,19 @@
 
         <ul>
             <li>Menu</li>
-            <li><a href="#" style="color: #0075FF;">Home</a></li>
-            <li><a href="#">My Profile</a></li>
+            <li><a href="{% url 'index' %}" style="color: #0075FF;">Home</a></li>
+            <li><a href="{% url 'profile' %}">My Profile</a></li>
             <li><a href="#">Followers</a></li>
         </ul>
 
-        <div id="user_info">
+        {% if request.user.username %}
+            <div id="user_info">
 
-            <img class="user_info_avatar" src="{{ request.user.profile.image.url }}">
+                <img class="user_info_avatar" src="{{ request.user.profile.image.url }}">
+                <a href="{% url 'profile' %}" id="user_info_name">{{ request.user.username }}</a>
 
-            <a href="#" id="user_info_name">{{ request.user.username }}</a>
-
-        </div>
+            </div>
+        {% endif %}
 
     </div>
 
