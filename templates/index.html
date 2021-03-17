@@ -84,7 +84,7 @@
             <li>Menu</li>
             <li><a href="{% url 'index' %}" style="color: #0075FF;">Home</a></li>
             <li><a href="{% url 'profile' %}">My Profile</a></li>
-            <li><a href="#">Followers</a></li>
+            <li><a href="{% url 'followers' %}">Followers</a></li>
         </ul>
 
         {% if request.user.username %}

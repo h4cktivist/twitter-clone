@@ -37,6 +37,24 @@ def profile(request):
 
 
 @login_required(login_url='login')
+def followers(request):
+    followers = []
+
+    profiles = Profile.objects.all()
+    for p in profiles:
+        if request.user in p.following.all():
+            followers.append(p)
+
+    follows = request.user.profile.following.all()
+
+    context = {
+        'followers': followers,
+        'follows': follows
+    }
+    return render(request, 'followers.html', context)
+
+
+@login_required(login_url='login')
 def otherProfile(request, u_name):
     try:
         u = User.objects.get(username=u_name)
