@@ -22,7 +22,7 @@ def index(request):
         except ValueError:
             return redirect('login')
 
-    posts = Post.objects.all()
+    posts = Post.objects.order_by('-date')
     form = PostCreationForm()
 
     context = {'posts': posts, 'form': form}
