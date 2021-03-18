@@ -29,6 +29,14 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+def search(request):
+    search_data = request.POST.get('input_search')
+    posts = Post.objects.filter(text__contains=search_data)
+
+    context = {'posts': posts}
+    return render(request, 'index.html', context)
+
+
 @login_required(login_url='login')
 def following_users_posts(request):
     users = request.user.profile.following.all()
