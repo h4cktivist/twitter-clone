@@ -43,6 +43,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.CharField('User', max_length=100)
     text = models.TextField('Comment text')
+    date = models.DateTimeField('Date', default=timezone.now)
 
     def __str__(self):
         return self.text

@@ -59,7 +59,7 @@ def detail(request, post_id):
     except:
         raise Http404('Post Not Found!')
 
-    comments = p.comment_set.all()
+    comments = p.comment_set.order_by('-date')
 
     context = {
         'post': p,
