@@ -106,8 +106,7 @@ def leave_comment(request, post_id):
     except:
         raise Http404('Post Not Found!')
 
-    username = request.user.username
-    p.comment_set.create(user=username, text=request.POST.get('text'))
+    p.comment_set.create(user=request.user, text=request.POST.get('text'))
 
     return redirect(reverse('detail', args=(p.id,)))
 
