@@ -84,7 +84,7 @@
             <li>Menu</li>
             <li><a href="{% url 'index' %}" style="color: #0075FF;">Home</a></li>
             <li><a href="{% url 'profile' %}">My Profile</a></li>
-            <li><a href="#">Followers</a></li>
+            <li><a href="{% url 'followers' %}">Followers</a></li>
         </ul>
 
         {% if request.user.username %}
@@ -100,11 +100,11 @@
 
     <div id="user_trends">
 
-        <form action="" method="get" id="form_search">
+        <form action="{% url 'seacrh' %}" method="POST" id="form_search">
 
-        <div id="form_search_block">  
-             
-             <input id="input_search" placeholder="Искать здесь..." type="search">
+        <div id="form_search_block">
+            {% csrf_token %}
+             <input id="input_search" name="input_search" placeholder="Искать здесь..." type="search">
 
             <button id="button_search" type="submit">Поиск</button>
 
@@ -125,7 +125,7 @@
                 <a href="{% url 'otherprofile' p.user.username %}" id="post_username">{{ p.user }}</a>
 
 
-        <span id="post_date">{{ p.date }}</span>
+        <span id="post_date">{{ p.publish_date }}</span>
 
         <br>
 

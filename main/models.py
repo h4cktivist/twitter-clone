@@ -14,8 +14,11 @@ class Post(models.Model):
     liked = models.ManyToManyField(User, default=None, blank=True, related_name='liked_by_user')
 
     @property
-    def was_published_recently(self):
-        return self.date >= (timezone.now() - datetime.timedelta(days=7))
+    def publish_date(self):
+        if self.date >= (timezone.now() - datetime.timedelta(hours=1)):
+            return f'{timezone.now().minute - self.date.minute} minutes ago'
+        else:
+            return self.date
 
     @property
     def likes(self):
@@ -41,8 +44,9 @@ class Like(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.CharField('User', max_length=100)
+    user = models.ForeignKey(User, related_name='comment_user', on_delete=models.CASCADE)
     text = models.TextField('Comment text')
+    date = models.DateTimeField('Date', default=timezone.now)
 
     def __str__(self):
         return self.text

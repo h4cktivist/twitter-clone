@@ -22,10 +22,18 @@ def index(request):
         except ValueError:
             return redirect('login')
 
-    posts = Post.objects.all()
+    posts = Post.objects.order_by('-date')
     form = PostCreationForm()
 
     context = {'posts': posts, 'form': form}
+    return render(request, 'index.html', context)
+
+
+def search(request):
+    search_data = request.POST.get('input_search')
+    posts = Post.objects.filter(text__contains=search_data)
+
+    context = {'posts': posts}
     return render(request, 'index.html', context)
 
 
@@ -51,7 +59,7 @@ def detail(request, post_id):
     except:
         raise Http404('Post Not Found!')
 
-    comments = p.comment_set.all()
+    comments = p.comment_set.order_by('-date')
 
     context = {
         'post': p,
@@ -98,8 +106,7 @@ def leave_comment(request, post_id):
     except:
         raise Http404('Post Not Found!')
 
-    username = request.user.username
-    p.comment_set.create(user=username, text=request.POST.get('text'))
+    p.comment_set.create(user=request.user, text=request.POST.get('text'))
 
     return redirect(reverse('detail', args=(p.id,)))
 
