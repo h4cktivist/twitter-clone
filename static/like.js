@@ -3,8 +3,8 @@ $(document).ready(function() {
         e.preventDefault();
         
         const post_id = $(this).attr('id');
-        const like_text = $(`.like-btn${ post_id }`).text();
-        const trim = $.trim(like_text);
+        const like_btn = $(`.like-btn${ post_id }`);
+        const trim = $.trim(like_btn.text());
 
         const likes = $(`.like-count${ post_id }`).text();
         const count_trim = parseInt(likes);
@@ -23,10 +23,12 @@ $(document).ready(function() {
             success: function(response) {
                 if (trim === 'Unlike') {
                     $(`.like-btn${ post_id }`).text('Like');
+                    like_btn.css('background-color', '#0075FF');
                     result = count_trim - 1;
                 }
                 else {
                     $(`.like-btn${ post_id }`).text('Unlike');
+                    like_btn.css('background-color', '#FF0000');
                     result = count_trim + 1;
                 }
                 $(`.like-count${ post_id }`).text(result);
