@@ -19,6 +19,7 @@ def index(request):
                 post.user = request.user
                 post.date = timezone.now()
                 post.save()
+                return redirect('index')
         except ValueError:
             return redirect('login')
 
