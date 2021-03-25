@@ -1,5 +1,5 @@
 body{
-	background-color: #000000;
+	background-color: #0A0A0A;
 	margin: 0 auto;
 	color: white;
 }
@@ -126,6 +126,7 @@ body{
 #user_menu.active{
 	width: 0%;
 	height: 0%;
+	border: none;
 	font-size: 0px;
 }
 
@@ -194,7 +195,6 @@ body{
 	width: 155px;
 	height: 70px;
 	left: 5px;
-	top: 400px;
 	animation-name: hide_info_block;
 	animation-duration: 1s;
 }
@@ -252,18 +252,19 @@ body{
 #form_search_block{
 	margin: 0 auto;
 	margin-top: 10px;
-	width: 85%;
+	width: 100%;
 	font-family: "ZIX";
 }
 
 #input_search {
-	width: 210px;
+	width: 80%;
   	height: 25px;
   	border: solid 1px #939393;
   	border-radius: 5px;
   	outline: none;
-  	background-color: #000000;
+  	background-color: #0A0A0A;
   	color: white;
+  	margin-left: 10px;
 }
 
 #button_search {
@@ -278,6 +279,7 @@ body{
 #user_trends.active{
 	width: 0%;
 	height: 0%;
+	border: none;
 }
 
 #post_block{
@@ -308,7 +310,7 @@ body{
 }
 
 & a:visited {
-	color: white;
+	color: #0075FF;
 	text-decoration:none;
 }
 
@@ -367,7 +369,7 @@ body{
 }
 
 &:visited {
-	color: white;
+	color: #0075FF;
 	text-decoration:none;
 }
 
