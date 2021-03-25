@@ -167,7 +167,12 @@
 
             <input type="hidden" name="post_id" value="{{ p.id }}">
 
-            <button type="submit" class="like-btn{{ p.id }}" id="like_btn">
+            <button type="submit" class="like-btn{{ p.id }}" id="like_btn"
+                    style="{% if user not in p.liked.all %}
+                                background-color: #0075FF;
+                            {% else %}
+                                background-color: #FF0000;
+                            {% endif %}">
 
                 {% if user not in p.liked.all %}
                     Like
