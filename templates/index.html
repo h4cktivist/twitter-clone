@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Index</title>
+    <title>Main page</title>
 
     {% if request.user.username %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -13,7 +13,7 @@
 
     <script type="text/javascript" src="{% static 'sneak_block.js' %}" defer></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'index_dark.css' %}">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -24,49 +24,52 @@
 
     <div id="poloska">
 
-    <span>FeedBack</span>
+    <span id="poloska_txt">Main Page</span>
 
-</div>
+    </div>
 
-    {% for message in messages %}
-        <p>{{ message }}</p> <!-- Уведомление о новом посте -->
-    {% endfor %}
+    <div id="menu_lowsize_btn" onclick="openLowSizeMenu()">
 
-    {% if form %}
-        <!-- Post creation form  ADAPTIVE -->
-        <div class="post_create_form">
+            <span></span>
+            <span></span>
+            <span></span>
 
-        <form enctype="multipart/form-data" method="post">
+        </div>
 
-            <div id="form_block" style="height: 125px; max-height: 205px;">
+    <div id="menu_lowsize">
+        <ul>
+            <li>Menu</li>
+            <li><a href="{% url 'index' %}" style="color: #0075FF;">Home</a></li>
+            <li><a href="{% url 'profile' %}">My Profile</a></li>
+            <li><a href="{% url 'followers' %}">Followers</a></li>
+        </ul>
+
+        <br>
+
+        {% if form_adaptive %}
+
+            <form enctype="multipart/form-data" method="post">
+
+            <div id="form_create_post_lowsize" style="height: 120px; max-height: 600px;">
             <label>
                 {% csrf_token %}
                 {{ form_adaptive.text }}<br>
                 {{ form_adaptive.image }}
-                <button type="submit" class="crp_button">Create post</button>
+                <button type="submit" class="crp_button_lowsize">Create post</button>
 
             </label>
 
             </div>
+            </form>
 
-            <script type="text/javascript">
-                let txtarea = document.getElementById('txtarea_lowsize');
-                let formblock = document.getElementById('form_block');
+            {% endif %}
 
-                function AutoSize(){
-                    if (txtarea.value.length >= 356){
-                        txtarea.style.height = parseInt(txtarea.style.height) + 90 + "px";
-                        formblock.style.height = parseInt(formblock.style.height) + 80 + "px";
-                    }
-                    else if (txtarea.value.length == 0){
-                        txtarea.style.height = 60 + "px";
-                        formblock.style.height = 125 + "px";
-                    }
-                }
-            </script>
-        </form>
-        </div>
-    {% endif %}
+    </div>
+
+
+    {% for message in messages %}
+        <p>{{ message }}</p> <!-- Уведомление о новом посте -->
+    {% endfor %}
 
     {% if form %}
         <!-- Post creation form -->
@@ -88,15 +91,22 @@
             <script type="text/javascript">
                 let txtarea = document.getElementById('txtarea');
                 let formblock = document.getElementById('form_block');
+                let formlwsz = document.getElementById('txtarea_lowsize');
 
                 function AutoSize(){
-                    if (txtarea.value.length >= 356){
+                    console.log(txtarea.value.length);
+                    console.log(formlwsz.value.length);
+                    if (txtarea.value.length >= 356 || formlwsz.value.length >= 356){
+                        console.log(txtarea.value.length);
                         txtarea.style.height = parseInt(txtarea.style.height) + 90 + "px";
                         formblock.style.height = parseInt(formblock.style.height) + 80 + "px";
+                        formlwsz.style.height = parseInt(formlwsz.style.height) + 30 + "px";
                     }
                     else if (txtarea.value.length == 0){
                         txtarea.style.height = 60 + "px";
                         formblock.style.height = 125 + "px";
+                        formlwsz.style.height = 60 + "px";
+
                     }
                 }
             </script>
@@ -104,7 +114,7 @@
         </div>
     {% endif %}
 
-    <br>
+    <br id="br_lowsize">
 
     <div id="user_menu">
 
@@ -127,7 +137,7 @@
             <div id="user_info">
 
                 <img class="user_info_avatar" src="{{ request.user.profile.image.url }}">
-                <a href="{% url 'profile' %}" id="user_info_name">{{ request.user.username }}</a>
+                <a href="{% url 'profile' %}" id="user_info_name" style="color: white;">{{ request.user.username }}</a>
 
             </div>
         {% endif %}
@@ -142,7 +152,7 @@
             {% csrf_token %}
              <input id="input_search" name="input_search" placeholder="Искать здесь..." type="search">
 
-            <button id="button_search" type="submit">Поиск</button>
+            <button id="button_search" type="submit">🔍Поиск</button>
 
         </div>
 
@@ -207,7 +217,7 @@
                     style="{% if user not in p.liked.all %}
                                 background-color: #0075FF;
                             {% else %}
-                                background-color: #FF0000;
+                                background-color: #FF9C00;
                             {% endif %}">
 
                 {% if user not in p.liked.all %}
