@@ -1,5 +1,5 @@
 body {
-  background-color: #0A0A0A;
+  background-color: #CCCCFF;
   margin: 0 auto;
   color: white;
 }
@@ -15,7 +15,7 @@ body {
   height: 40px;
   margin: 0 auto;
   text-align: left;
-  border: solid 1px #939393;
+  border: solid 3px #0075FF;
   border-left: none;
   border-right: none;
   border-bottom: none;
@@ -26,14 +26,14 @@ body {
   font-family: "ZIX";
   position: relative;
   top: 10px;
-  color: white;
+  color: #0075FF;
   margin-left: 10px;
 }
 
 #poloska.active {
   width: 74.8%;
-  border-left: solid 1px #939393;
-  border-right: solid 1px #939393;
+  border-left: solid 3px #0075FF;
+  border-right: solid 3px #0075FF;
 }
 
 .post_create_form form {
@@ -47,7 +47,7 @@ body {
 #form_block {
   width: 50%;
   margin: 0 auto;
-  border: solid 1px #939393;
+  border: solid 3px #0075FF;
   border-left: none;
   border-right: none;
   transition-duration: 1s;
@@ -55,8 +55,8 @@ body {
 
 #form_block.active {
   width: 74.8%;
-  border-left: solid 1px #939393;
-  border-right: solid 1px #939393;
+  border-left: solid 3px #0075FF;
+  border-right: solid 3px #0075FF;
 }
 
 #form_block.activate {
@@ -70,7 +70,7 @@ body {
   border: none;
   margin-top: 10px;
   background: none;
-  color: white;
+  color: black;
   outline: none;
 }
 
@@ -88,13 +88,13 @@ body {
   cursor: pointer;
 }
 .crp_button:hover {
-  background-color: #FFC900;
+  background-color: #FF9C00;
 }
 
 #user_menu {
   width: 24.9%;
   height: 99.7%;
-  border: solid 1px #939393;
+  border: solid 3px #0075FF;
   border-left: none;
   position: fixed;
   top: 0px;
@@ -102,19 +102,19 @@ body {
   transition-duration: 1s;
 }
 #user_menu a {
-  color: white;
+  color: #0075FF;
   text-decoration: none;
 }
 #user_menu a:active {
-  color: white;
+  color: #0075FF;
   text-decoration: none;
 }
 #user_menu a:visited {
-  color: white;
+  color: #0075FF;
   text-decoration: none;
 }
 #user_menu a:hover {
-  color: white;
+  color: #0075FF;
   text-decoration: underline;
 }
 
@@ -127,7 +127,7 @@ body {
 
 #user_menu ul li:first-child {
   margin-left: 10%;
-  color: white;
+  color: #0075FF;
   font-size: 1.95em;
   list-style: none;
   padding: 25px 10px 10px 10px;
@@ -141,16 +141,17 @@ body {
   list-style: none;
   padding: 15px 10px;
   font-family: "Open Sans", sans-serif;
+  color: #0075FF;
 }
 
 #user_menu ul li a {
-  color: white;
+  color: #0075FF;
   text-decoration: none;
   cursor: pointer;
 }
 
 #user_menu ul li a:hover {
-  color: #0075FF;
+  color: #FFC900;
 }
 
 #user_info {
@@ -164,6 +165,7 @@ body {
   transition-duration: 1s;
   animation-name: hide_info_block_before;
   animation-duration: 0.5s;
+  color: black;
 }
 
 .user_info_avatar {
@@ -179,11 +181,11 @@ body {
   bottom: 15px;
   margin-left: 5px;
   font-family: "Open Sans", sans-serif;
-  color: #0075FF;
 }
 
 #user_info_name {
   font-size: 18px;
+  color: black;
 }
 
 #user_info.active {
@@ -246,7 +248,7 @@ body {
   margin: 4px 0;
 }
 #menu_btn:hover {
-  background-color: #FFC900;
+  background-color: #FF9C00;
 }
 
 #menu_btn.active {
@@ -256,7 +258,7 @@ body {
 #user_trends {
   width: 24.9%;
   height: 99.7%;
-  border: solid 1px #939393;
+  border: solid 3px #0075FF;
   border-right: none;
   position: fixed;
   top: 0px;
@@ -274,11 +276,11 @@ body {
 #input_search {
   width: 80%;
   height: 25px;
-  border: solid 1px #939393;
+  border: solid 3px #0075FF;
   border-radius: 5px;
   outline: none;
-  background-color: #0A0A0A;
-  color: white;
+  background: none;
+  color: black;
   margin-left: 10px;
 }
 #input_search:focus {
@@ -293,9 +295,10 @@ body {
   border: none;
   outline: none;
   color: white;
+  cursor: pointer;
 }
 #button_search:hover {
-  background-color: #FFC900;
+  background-color: #FF9C00;
 }
 
 #user_trends.active {
@@ -307,14 +310,14 @@ body {
 #post_block {
   width: 49.9%;
   margin: 0 auto;
-  border-top: solid 1px #939393;
+  border-top: solid 3px #0075FF;
   transition-duration: 1s;
 }
 
 #post_block.active {
   width: 74.8%;
-  border-left: solid 1px #939393;
-  border-right: solid 1px #939393;
+  border-left: solid 3px #0075FF;
+  border-right: solid 3px #0075FF;
 }
 
 .post_info {
@@ -350,7 +353,7 @@ body {
   left: 0px;
   margin-left: 10px;
   font-family: "Open Sans", sans-serif;
-  color: #0075FF;
+  color: #0000FF;
 }
 
 #post_date {
@@ -362,6 +365,7 @@ body {
 #post_text {
   margin-left: 20px;
   font-family: "Open Sans", sans-serif;
+  color: black;
 }
 
 .post_img_container {
@@ -378,7 +382,7 @@ body {
 }
 
 #more {
-  color: #0075FF;
+  color: #0000FF;
   text-decoration: none;
 }
 #more:active {
@@ -409,7 +413,7 @@ body {
 }
 
 #like_color {
-  color: "#";
+  color: #0075FF;
 }
 
 ::-webkit-scrollbar-button {
@@ -427,7 +431,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background-color: #939393;
+  background-color: #0075FF;
   background-image: url("https://yraaa.ru/_pu/24/59610063.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -459,7 +463,7 @@ body {
 
   #form_block {
     display: none;
-    border-left: solid 1px #939393;
+    border-left: solid 3px #0075FF;
   }
 
   #user_trends {
@@ -469,14 +473,14 @@ body {
   #post_block {
     width: 80%;
     margin-top: 0px;
-    border-left: solid 1px #939393;
-    border-right: solid 1px #939393;
+    border-left: solid 3px #0075FF;
+    border-right: solid 3px #0075FF;
   }
 
   #poloska {
     width: 80%;
-    border-left: solid 1px #939393;
-    border-right: solid 1px #939393;
+    border-left: solid 3px #0075FF;
+    border-right: solid 3px #0075FF;
     text-align: center;
   }
 
@@ -506,9 +510,6 @@ body {
     border-radius: 12px;
     cursor: pointer;
     transition-duration: 1s;
-  }
-  #menu_lowsize_btn:hover {
-    background-color: #FFC900;
   }
 
   #menu_lowsize_btn span {
@@ -542,10 +543,10 @@ body {
   }
 }
 #menu_lowsize {
-  background-color: #0A0A0A;
+  background-color: #CCCCFF;
   width: 80%;
   position: absolute;
-  left: 9.8%;
+  left: 9.3%;
   top: 42px;
   transition-duration: 1s;
   z-index: 99;
@@ -553,7 +554,7 @@ body {
   text-align: left;
 }
 #menu_lowsize ul li:first-child {
-  color: white;
+  color: #0075FF;
   font-size: 1.95em;
   list-style: none;
   font-family: "ZIX";
@@ -576,14 +577,14 @@ body {
 #menu_lowsize.active {
   height: 300px;
   font-size: 12px;
-  border: solid 1px #939393;
+  border: solid 3px #0075FF;
 }
 
 #form_create_post_lowsize {
   position: relative;
   top: -10px;
   display: none;
-  border-top: solid 1px #939393;
+  border-top: solid 3px #0075FF;
 }
 #txtarea_lowsize {
   overflow-y: auto;

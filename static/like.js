@@ -1,42 +1,39 @@
-$(document).ready(() => {
+$(document).ready(function() {
     $('.like-form').submit(function(e) {
         e.preventDefault();
-
+        
         const post_id = $(this).attr('id');
         const like_btn = $(`.like-btn${ post_id }`);
         const trim = $.trim(like_btn.text());
 
-        const likes = $(`.like-count${ post_id }`);
-        const likes_count = parseInt(likes.text());
-        let result;
+        const likes = $(`.like-count${ post_id }`).text();
+        const count_trim = parseInt(likes);
 
-        const request_type = 'POST';
         const url = $(this).attr('action');
-        const csrf_token = $('input[name=csrfmiddlewaretoken]').val();
-
-
+        let result;
+        
         $.ajax({
-            type: request_type,
+            type: 'POST',
             url: url,
             data: {
-                'csrfmiddlewaretoken': csrf_token,
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
                 'post_id': post_id
             },
 
-            success: () => {
+            success: function(response) {
                 if (trim === 'Unlike') {
-                    like_btn.text('Like');
+                    $(`.like-btn${ post_id }`).text('Like');
                     like_btn.css('background-color', '#0075FF');
-                    result = likes_count - 1;
+                    result = count_trim - 1;
                 }
                 else {
-                    like_btn.text('Unlike');
-                    like_btn.css('background-color', '#FF0000');
-                    result = likes_count + 1;
+                    $(`.like-btn${ post_id }`).text('Unlike');
+                    like_btn.css('background-color', '#FF9C00');
+                    result = count_trim + 1;
                 }
-                likes.text(result);
+                $(`.like-count${ post_id }`).text(result);
             },
-            error: (response) => {
+            error: function(response) {
                 console.log('error', response);
             }
         });
