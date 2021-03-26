@@ -1,25 +1,27 @@
-$(document).ready(function() {
+$(document).ready(() => {
     $('.follow-unfollow-form').submit(function(e) {
         e.preventDefault();
 
         const profile_pk = $(this).attr('id');
-        const btn_text = $(`.btn${ profile_pk }`).text();
-        const trim = $.trim(btn_text);
+        const btn = $(`.btn${ profile_pk }`);
+        const btn_text = $.trim(btn.text());
+
         const url = $(this).attr('action');
+        const request_type = 'POST';
+        const csrf_token = $('input[name=csrfmiddlewaretoken]').val();
 
         $.ajax({
-            type: 'POST',
+            type: request_type,
             url: url,
             data: {
-                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+                'csrfmiddlewaretoken': csrf_token,
                 'profile_pk': profile_pk
             },
 
-            success: function(response) {
-                if (trim === 'Follow') $(`.btn${ profile_pk }`).text('Unfollow');
-                else $(`.btn${ profile_pk }`).text('Follow');
+            success: () => {
+                (btn_text === 'Follow') ? btn.text('Unfollow') : btn.text('Follow');
             },
-            error: function(response) {
+            error: (response) => {
                 console.log('error', response);
             }
         });
