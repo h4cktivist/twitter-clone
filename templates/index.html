@@ -33,6 +33,42 @@
     {% endfor %}
 
     {% if form %}
+        <!-- Post creation form  ADAPTIVE -->
+        <div class="post_create_form">
+
+        <form enctype="multipart/form-data" method="post">
+
+            <div id="form_block" style="height: 125px; max-height: 205px;">
+            <label>
+                {% csrf_token %}
+                {{ form_adaptive.text }}<br>
+                {{ form_adaptive.image }}
+                <button type="submit" class="crp_button">Create post</button>
+
+            </label>
+
+            </div>
+
+            <script type="text/javascript">
+                let txtarea = document.getElementById('txtarea_lowsize');
+                let formblock = document.getElementById('form_block');
+
+                function AutoSize(){
+                    if (txtarea.value.length >= 356){
+                        txtarea.style.height = parseInt(txtarea.style.height) + 90 + "px";
+                        formblock.style.height = parseInt(formblock.style.height) + 80 + "px";
+                    }
+                    else if (txtarea.value.length == 0){
+                        txtarea.style.height = 60 + "px";
+                        formblock.style.height = 125 + "px";
+                    }
+                }
+            </script>
+        </form>
+        </div>
+    {% endif %}
+
+    {% if form %}
         <!-- Post creation form -->
         <div class="post_create_form">
 

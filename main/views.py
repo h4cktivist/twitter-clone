@@ -7,25 +7,38 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import Post, Like
-from .forms import PostCreationForm
+from .forms import PostCreationForm, PostCreationFormAdaptive
 
 
 def index(request):
     if request.method == 'POST':
         try:
             form = PostCreationForm(request.POST, request.FILES)
+            form_adaptive = PostCreationFormAdaptive(request.POST, request.FILES)
+
             if form.is_valid():
                 post = form.save(commit=False)
                 post.user = request.user
                 post.date = timezone.now()
                 post.save()
+                return redirect('index')
+
+            elif form_adaptive.is_valid():
+                post = form_adaptive.save(commit=False)
+                post.user = request.user
+                post.date = timezone.now()
+                post.save()
+                return redirect('index')
+
         except ValueError:
             return redirect('login')
 
     posts = Post.objects.order_by('-date')
-    form = PostCreationForm()
 
-    context = {'posts': posts, 'form': form}
+    form = PostCreationForm()
+    form_adaptive = PostCreationFormAdaptive
+
+    context = {'posts': posts, 'form': form, 'form_adaptive': form_adaptive}
     return render(request, 'index.html', context)
 
 
