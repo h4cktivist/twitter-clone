@@ -28,12 +28,11 @@ class Post(models.Model):
         return self.text
 
 
-LIKE_CHOICES = (
-    ('Like', 'Like'),
-    ('Unlike', 'Unlike')
-)
-
 class Like(models.Model):
+    LIKE_CHOICES = (
+        ('Like', 'Like'),
+        ('Unlike', 'Unlike')
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='liked_user')
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     value = models.CharField(max_length=10, choices=LIKE_CHOICES, default='Like')
