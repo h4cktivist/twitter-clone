@@ -13,7 +13,11 @@
 
     <script type="text/javascript" src="{% static 'sneak_block.js' %}" defer></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'index_dark.css' %}">
+    {% if request.session.theme == 'dark' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'index_dark.css' %}">
+    {% else %}
+        <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    {% endif %}
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -141,6 +145,13 @@
 
             </div>
         {% endif %}
+
+
+    <!-- Kostil theme switcher by h4cktivist -->
+    <form method="post" action="{% url 'theme_switch' %}">
+        {% csrf_token %}
+        <button type="submit">Switch Theme</button>
+    </form>
 
     </div>
 

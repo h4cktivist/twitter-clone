@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.urls import reverse
 from django.http import Http404
 from django.utils import timezone
@@ -145,5 +145,15 @@ def like_post(request):
                 like.value = 'Like'
         else:
             like.save()
+
+    return redirect('index')
+
+
+@login_required(login_url='login')
+def theme_switch(request):
+    if request.session['theme'] == 'light':
+        request.session['theme'] = 'dark'
+    else:
+        request.session['theme'] = 'light'
 
     return redirect('index')
