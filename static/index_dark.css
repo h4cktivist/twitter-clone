@@ -283,7 +283,7 @@ body {
 }
 
 #input_search {
-  width: 80%;
+  width: 90%;
   height: 25px;
   border: solid 3px #0075FF;
   border-radius: 5px;
@@ -298,12 +298,14 @@ body {
 
 #button_search {
   height: 25px;
-  width: 15%;
+  width: 90%;
   background-color: #0075FF;
   border-radius: 5px;
   border: none;
   outline: none;
   color: white;
+  margin-left: 10px;
+  margin-top: 10px;
   cursor: pointer;
 }
 #button_search:hover {
@@ -509,9 +511,9 @@ body {
 
   #poloska {
     width: 80%;
-    border-left: solid 1px #939393;
-    border-right: solid 1px #939393;
-    border-bottom: solid 1px #939393;
+    border-left: solid 3px #0075FF;
+    border-right: solid 3px #0075FF;
+    border-bottom: solid 3px #0075FF;
     text-align: center;
   }
 
@@ -521,8 +523,8 @@ body {
 
   #post_block {
     width: 80%;
-    border-left: solid 1px #939393;
-    border-right: solid 1px #939393;
+    border-left: solid 3px #0075FF;
+    border-right: solid 3px #0075FF;
   }
 
   .post_img_container {
@@ -541,10 +543,10 @@ body {
   }
 }
 #menu_lowsize {
-  background-color: #0A0A0A;
+  background-color: #CCCCFF;
   width: 80%;
   position: absolute;
-  left: 9.8%;
+  left: 9.3%;
   top: 42px;
   transition-duration: 1s;
   z-index: 99;
@@ -564,25 +566,25 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 #menu_lowsize ul li a {
-  color: white;
+  color: #0075FF;
   text-decoration: none;
   cursor: pointer;
 }
 #menu_lowsize ul li a:hover {
-  color: #0075FF;
+  color: #FFC900;
 }
 
 #menu_lowsize.active {
-  height: 300px;
+  height: 400px;
   font-size: 12px;
-  border: solid 1px #939393;
+  border: solid 3px #0075FF;
 }
 
 #form_create_post_lowsize {
   position: relative;
   top: -10px;
   display: none;
-  border-top: solid 1px #939393;
+  border-top: solid 1px #0075FF;
 }
 #txtarea_lowsize {
   overflow-y: auto;
@@ -591,11 +593,11 @@ body {
   border: none;
   margin-top: 10px;
   background: none;
-  color: white;
+  color: black;
   outline: none;
 }
 #txtarea_lowsize::placeholder {
-  color: white;
+  color: black;
 }
 
 #form_create_post_lowsize.active {
@@ -603,8 +605,9 @@ body {
 }
 
 .crp_button_lowsize {
-  position: absolute;
-  right: 40%;
+  position: relative;
+  float: right;
+  margin-right: 5px;
   height: 30px;
   width: 120px;
   color: white;
@@ -617,4 +620,67 @@ body {
 }
 .crp_button_lowsize:hover {
   background-color: #FFC900;
+}
+
+#switcher_box {
+  width: 70%;
+  height: 30px;
+  border: solid 3px #0030FF;
+  background-color: #e6e3df;
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px white;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+#switcher_box_lowsize {
+  width: 50%;
+  height: 30px;
+  border: solid 3px #0030FF;
+  background-color: #e6e3df;
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px white;
+  border-radius: 20px;
+  margin-left: 10px;
+  display: none;
+}
+
+#switcher_box_lowsize.active {
+  display: block;
+}
+
+#switcher_lowsize {
+  position: relative;
+  height: 100%;
+  animation-name: switch;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  border: none;
+  outline: none;
+  background-color: #0075FF;
+  border-radius: 20px;
+  color: white;
+}
+
+#switcher {
+  position: relative;
+  height: 100%;
+  animation-name: switch;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  border: none;
+  outline: none;
+  background-color: #0075FF;
+  border-radius: 20px;
+  color: white;
+}
+#switcher:hover {
+  background-color: #0090FF;
+}
+
+@keyframes switch {
+  0% {
+    left: 50%;
+  }
+  100% {
+    left: 0%;
+  }
 }

@@ -32,7 +32,7 @@ body {
   font-family: "ZIX";
   position: relative;
   top: 10px;
-  color: white;
+  color: #0075FF;
   margin-left: 10px;
 }
 
@@ -571,7 +571,7 @@ body {
 }
 
 #menu_lowsize.active {
-  height: 300px;
+  height: 400px;
   font-size: 12px;
   border: solid 1px #939393;
 }
@@ -601,8 +601,9 @@ body {
 }
 
 .crp_button_lowsize {
-  position: absolute;
-  right: 40%;
+  position: relative;
+  float: right;
+  margin-right: 5px;
   height: 30px;
   width: 120px;
   color: white;
@@ -615,4 +616,75 @@ body {
 }
 .crp_button_lowsize:hover {
   background-color: #FFC900;
+}
+
+#switcher_box {
+  width: 70%;
+  height: 30px;
+  border: solid 3px #0030FF;
+  background-color: none;
+  box-shadow: inset 1px 1px 5px #2B2B2B, 1px 1px 5px #2B2B2B;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+#switcher_box_lowsize {
+  width: 50%;
+  height: 30px;
+  border: solid 3px #0030FF;
+  background-color: none;
+  box-shadow: inset 1px 1px 5px #2B2B2B, 1px 1px 5px #2B2B2B;
+  border-radius: 20px;
+  margin-left: 10px;
+  display: none;
+}
+
+#switcher_box_lowsize.active {
+  display: block;
+}
+
+#switcher_lowsize {
+  position: relative;
+  height: 100%;
+  animation-name: switch_lowsize;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  border: none;
+  outline: none;
+  background-color: #0075FF;
+  border-radius: 20px;
+  color: white;
+}
+
+@keyframes switch_lowsize {
+  0% {
+    left: 8%;
+  }
+  100% {
+    left: 47%;
+  }
+}
+#switcher {
+  position: relative;
+  height: 100%;
+  animation-name: switch;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  border: none;
+  outline: none;
+  background-color: #0075FF;
+  border-radius: 20px;
+  color: white;
+}
+#switcher:hover {
+  background-color: #0090FF;
+}
+
+@keyframes switch {
+  0% {
+    left: 8%;
+  }
+  100% {
+    left: 58%;
+  }
 }
