@@ -10,6 +10,12 @@ body {
   font-style: normal;
   font-weight: normal;
 }
+@font-face {
+  font-family: "runic";
+  src: url("/static/fonts/runic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
 #poloska {
   width: 50%;
   height: 40px;
@@ -89,6 +95,9 @@ body {
 }
 .crp_button:hover {
   background-color: #FF9C00;
+}
+.crp_button:active {
+  margin-top: 9px;
 }
 
 #user_menu {
@@ -300,6 +309,9 @@ body {
 #button_search:hover {
   background-color: #FF9C00;
 }
+#button_search:active {
+  margin-top: 9px;
+}
 
 #user_trends.active {
   width: 0%;
@@ -407,9 +419,16 @@ body {
   cursor: pointer;
   color: white;
   width: 60px;
+  position: relative;
 }
 #like_btn span {
   color: white;
+}
+#like_btn:active {
+  top: -1px;
+}
+#like_btn:hover {
+  background-color: #FF9C00;
 }
 
 #like_color {
@@ -427,6 +446,7 @@ body {
 ::-webkit-scrollbar-track {
   background-color: black;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -456,60 +476,19 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-width: 750px) {
-  #user_menu {
-    display: none;
-  }
-
-  #form_block {
-    display: none;
-    border-left: solid 3px #0075FF;
-  }
-
-  #user_trends {
-    display: none;
-  }
-
-  #post_block {
-    width: 80%;
-    margin-top: 0px;
-    border-left: solid 3px #0075FF;
-    border-right: solid 3px #0075FF;
-  }
-
-  #poloska {
-    width: 80%;
-    border-left: solid 3px #0075FF;
-    border-right: solid 3px #0075FF;
-    text-align: center;
-  }
-
-  .post_img_container {
-    height: 200px;
-  }
-
-  #post_image {
-    height: 100%;
-    width: 100%;
-  }
-
-  #post_date {
-    font-size: 14px;
-  }
-
-  #br_lowsize {
-    display: none;
-  }
-
+@media screen and (max-width: 768px) {
   #menu_lowsize_btn {
     position: absolute;
-    left: 90px;
-    top: 3px;
+    left: 11%;
+    top: 0.5%;
     background: #0075FF;
     padding: 5px;
     border-radius: 12px;
     cursor: pointer;
     transition-duration: 1s;
+  }
+  #menu_lowsize_btn:hover {
+    background-color: #FFC900;
   }
 
   #menu_lowsize_btn span {
@@ -519,34 +498,53 @@ body {
     background-color: black;
     margin: 4px 0;
   }
-}
-@media screen and (max-width: 490px) {
-  #menu_lowsize_btn {
-    left: 60px;
+
+  #user_menu {
+    display: none;
+  }
+
+  #user_trends {
+    display: none;
+  }
+
+  #poloska {
+    width: 80%;
+    border-left: solid 1px #939393;
+    border-right: solid 1px #939393;
+    border-bottom: solid 1px #939393;
+    text-align: center;
+  }
+
+  #form_block {
+    display: none;
+  }
+
+  #post_block {
+    width: 80%;
+    border-left: solid 1px #939393;
+    border-right: solid 1px #939393;
+  }
+
+  .post_img_container {
+    height: 200px;
+    width: 100%;
+  }
+
+  #post_image {
+    height: 100%;
+    width: 50%;
   }
 }
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
   #menu_lowsize {
     display: none;
   }
 }
-@media screen and (max-width: 1600px) {
-  #input_search {
-    width: 90%;
-  }
-
-  #button_search {
-    width: 90%;
-    position: absolute;
-    right: 7%;
-    top: 7%;
-  }
-}
 #menu_lowsize {
-  background-color: #CCCCFF;
+  background-color: #0A0A0A;
   width: 80%;
   position: absolute;
-  left: 9.3%;
+  left: 9.8%;
   top: 42px;
   transition-duration: 1s;
   z-index: 99;
@@ -554,7 +552,7 @@ body {
   text-align: left;
 }
 #menu_lowsize ul li:first-child {
-  color: #0075FF;
+  color: white;
   font-size: 1.95em;
   list-style: none;
   font-family: "ZIX";
@@ -577,14 +575,14 @@ body {
 #menu_lowsize.active {
   height: 300px;
   font-size: 12px;
-  border: solid 3px #0075FF;
+  border: solid 1px #939393;
 }
 
 #form_create_post_lowsize {
   position: relative;
   top: -10px;
   display: none;
-  border-top: solid 3px #0075FF;
+  border-top: solid 1px #939393;
 }
 #txtarea_lowsize {
   overflow-y: auto;
@@ -593,8 +591,11 @@ body {
   border: none;
   margin-top: 10px;
   background: none;
-  color: black;
+  color: white;
   outline: none;
+}
+#txtarea_lowsize::placeholder {
+  color: white;
 }
 
 #form_create_post_lowsize.active {
@@ -602,18 +603,16 @@ body {
 }
 
 .crp_button_lowsize {
+  position: absolute;
+  right: 40%;
   height: 30px;
   width: 120px;
-  position: relative;
-  top: -10px;
-  float: right;
   color: white;
   background-color: #0075FF;
   outline: none;
   border: none;
   border-radius: 20px;
   font-family: "ZIX";
-  margin-right: 10px;
   cursor: pointer;
 }
 .crp_button_lowsize:hover {

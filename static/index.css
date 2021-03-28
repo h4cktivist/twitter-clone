@@ -10,6 +10,12 @@ body {
   font-style: normal;
   font-weight: normal;
 }
+@font-face {
+  font-family: "runic";
+  src: url("/static/fonts/runic.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
 #poloska {
   width: 50%;
   height: 40px;
@@ -89,6 +95,9 @@ body {
 }
 .crp_button:hover {
   background-color: #FFC900;
+}
+.crp_button:active {
+  margin-top: 9px;
 }
 
 #user_menu {
@@ -179,7 +188,6 @@ body {
   bottom: 15px;
   margin-left: 5px;
   font-family: "Open Sans", sans-serif;
-  color: #0075FF;
 }
 
 #user_info_name {
@@ -272,7 +280,7 @@ body {
 }
 
 #input_search {
-  width: 80%;
+  width: 90%;
   height: 25px;
   border: solid 1px #939393;
   border-radius: 5px;
@@ -287,15 +295,21 @@ body {
 
 #button_search {
   height: 25px;
-  width: 15%;
+  width: 90%;
   background-color: #0075FF;
   border-radius: 5px;
   border: none;
   outline: none;
   color: white;
+  margin-left: 10px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 #button_search:hover {
   background-color: #FFC900;
+}
+#button_search:active {
+  margin-top: 9px;
 }
 
 #user_trends.active {
@@ -403,9 +417,16 @@ body {
   cursor: pointer;
   color: white;
   width: 60px;
+  position: relative;
 }
 #like_btn span {
   color: white;
+}
+#like_btn:active {
+  top: -1px;
+}
+#like_btn:hover {
+  background-color: #FF9C00;
 }
 
 #like_color {
@@ -423,6 +444,7 @@ body {
 ::-webkit-scrollbar-track {
   background-color: black;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -452,55 +474,11 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-width: 750px) {
-  #user_menu {
-    display: none;
-  }
-
-  #form_block {
-    display: none;
-    border-left: solid 1px #939393;
-  }
-
-  #user_trends {
-    display: none;
-  }
-
-  #post_block {
-    width: 80%;
-    margin-top: 0px;
-    border-left: solid 1px #939393;
-    border-right: solid 1px #939393;
-  }
-
-  #poloska {
-    width: 80%;
-    border-left: solid 1px #939393;
-    border-right: solid 1px #939393;
-    text-align: center;
-  }
-
-  .post_img_container {
-    height: 200px;
-  }
-
-  #post_image {
-    height: 100%;
-    width: 100%;
-  }
-
-  #post_date {
-    font-size: 14px;
-  }
-
-  #br_lowsize {
-    display: none;
-  }
-
+@media screen and (max-width: 768px) {
   #menu_lowsize_btn {
     position: absolute;
-    left: 90px;
-    top: 3px;
+    left: 11%;
+    top: 0.5%;
     background: #0075FF;
     padding: 5px;
     border-radius: 12px;
@@ -518,27 +496,46 @@ body {
     background-color: black;
     margin: 4px 0;
   }
-}
-@media screen and (max-width: 490px) {
-  #menu_lowsize_btn {
-    left: 60px;
-  }
-}
-@media screen and (min-width: 750px) {
-  #menu_lowsize {
+
+  #user_menu {
     display: none;
   }
-}
-@media screen and (max-width: 1600px) {
-  #input_search {
-    width: 90%;
+
+  #user_trends {
+    display: none;
   }
 
-  #button_search {
-    width: 90%;
-    position: absolute;
-    right: 7%;
-    top: 7%;
+  #poloska {
+    width: 80%;
+    border-left: solid 1px #939393;
+    border-right: solid 1px #939393;
+    border-bottom: solid 1px #939393;
+    text-align: center;
+  }
+
+  #form_block {
+    display: none;
+  }
+
+  #post_block {
+    width: 80%;
+    border-left: solid 1px #939393;
+    border-right: solid 1px #939393;
+  }
+
+  .post_img_container {
+    height: 200px;
+    width: 100%;
+  }
+
+  #post_image {
+    height: 100%;
+    width: 50%;
+  }
+}
+@media screen and (min-width: 768px) {
+  #menu_lowsize {
+    display: none;
   }
 }
 #menu_lowsize {
@@ -592,8 +589,11 @@ body {
   border: none;
   margin-top: 10px;
   background: none;
-  color: black;
+  color: white;
   outline: none;
+}
+#txtarea_lowsize::placeholder {
+  color: white;
 }
 
 #form_create_post_lowsize.active {
@@ -601,18 +601,16 @@ body {
 }
 
 .crp_button_lowsize {
+  position: absolute;
+  right: 40%;
   height: 30px;
   width: 120px;
-  position: relative;
-  top: -10px;
-  float: right;
   color: white;
   background-color: #0075FF;
   outline: none;
   border: none;
   border-radius: 20px;
   font-family: "ZIX";
-  margin-right: 10px;
   cursor: pointer;
 }
 .crp_button_lowsize:hover {
