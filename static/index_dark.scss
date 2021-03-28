@@ -115,8 +115,8 @@ body{
 	border: solid 3px #0075FF;
 	border-left: none;
 	position: fixed;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	transition-duration: 1s;
 
 & a {
@@ -141,10 +141,10 @@ body{
 }
 
 #user_menu.active{
-	width: 0%;
-	height: 0%;
+	width: 0;
+	height: 0;
 	border: none;
-	font-size: 0px;
+	font-size: 0;
 }
 
 #user_menu ul li:first-child{
@@ -266,8 +266,8 @@ body{
 	border: solid 3px #0075FF;
 	border-right: none;
 	position: fixed;
-	top: 0px;
-	right: 0px;
+	top: 0;
+	right: 0;
 	transition-duration: 1s;
 }
 
@@ -313,8 +313,8 @@ body{
 }
 
 #user_trends.active{
-	width: 0%;
-	height: 0%;
+	width: 0;
+	height: 0;
 	border: none;
 }
 
@@ -365,7 +365,7 @@ body{
 
 #post_username{
 	position: relative;
-	left: 0px;
+	left: 0;
 	margin-left: 10px;
 	font-family: 'Open Sans', sans-serif;
 	color: #0000FF;
@@ -442,10 +442,9 @@ body{
 }
 
 ::-webkit-scrollbar-button {
-  background-image: url("");
   background-repeat: no-repeat;
   width: 5px;
-  height: 0px;
+  height: 0;
   cursor: pointer;
 }
 
@@ -470,7 +469,6 @@ body{
 }
 
 ::-webkit-resizer {
-  background-image: url("");
   background-repeat: no-repeat;
   width: 7px;
   height: 20px;
@@ -557,7 +555,7 @@ body{
 	top: 42px;
 	transition-duration: 1s;
 	z-index: 99;
-	font-size: 0px;
+	font-size: 0;
 	text-align: left;
 
 & ul li:first-child{
@@ -647,6 +645,10 @@ body{
 	margin: 0 auto;
 }
 
+#switcher_box.active{
+	display: none;
+}
+
 #switcher_box_lowsize{
 	width: 50%;
 	height: 30px;
@@ -693,5 +695,5 @@ body{
 
 @keyframes switch {
 	0%{left: 50%;}
-	100%{left: 0%;}
+	100%{left: 0;}
 }
