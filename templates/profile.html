@@ -1,34 +1,107 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+
+    <link rel="icon" href="/media/faviconca.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
-    <h1>Profile page</h1>
+
+    <div id="poloska">
+
+        <span>Profile page</span>
+
+    </div>
+
+    <div id="user_menu_lsz_btn" onclick="openLowSizeMenu()">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+    <div id="user_menu_lsz">
+        <ul>
+            <li style="color: #0075FF;">Menu</li>
+            <li><a href="{% url 'index' %}" style="color: #0075FF; text-decoration: underline;">My Profile</a></li>
+            <li><a href="{% url 'profile' %}">Home</a></li>
+            <li><a href="{% url 'followers' %}">Followers</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        function openLowSizeMenu() {
+            document.getElementById("user_menu_lsz").classList.toggle("active");
+        }
+    </script>
+
+    <div id="user_menu">
+
+        <ul>
+            <li>Menu</li>
+            <li><a href="{% url 'profile' %}" style="color: #0075FF; text-decoration: underline;">My Profile</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'followers' %}">Followers</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+        </ul>
+
+    </div>
 
    {% for message in messages %}
         <p>{{ message }}</p>
     {% endfor %}
 
-    <img src="{{ user.profile.image.url }}"><br>
+    <div id="user_info_block">
 
-    <span>Hello, {{ request.user }}</span><br>  
-    <span>{{ request.user.email }}</span><br>
-    <span>You are following {{ user.profile.following_count }} users</span>
+        <div id="img_container">
 
-    <br><br>
+            <img src="{{ user.profile.image.url }}"><br>
+
+        </div>
+
+        <div id="user_info">
+            <span>Hello, {{ request.user }}</span><br>
+            <span>{{ request.user.email }}</span><br>
+            <span>You are following {{ user.profile.following_count }} users</span><br>
+            <span>About me: Ya hmtl programmist</span><br>
+            <button id="edit" onclick="openEditBlock()">Edit</button>
+        </div>
+
+        <script type="text/javascript">
+            function openEditBlock() {
+                document.getElementById("sueta").classList.toggle("active");
+            }
+        </script>
+
+    </div>
+
+    <div id="sueta">
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         {{ u_form.as_p }}
+        <br>
         {{ p_form.as_p }}
 
         <button type="submit">Update</button>
     </form>
 
     <br><br>
-    <span><a href="{% url 'logout' %}">Log Out</a></span>
+
+    </div>
 </body>
 </html>
