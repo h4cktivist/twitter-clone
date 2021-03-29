@@ -11,6 +11,13 @@ body{
   	font-weight: normal;
 }
 
+@font-face {
+	font-family: "runic";
+  	src: url("/static/fonts/runic.ttf") format("truetype");
+  	font-style: normal;
+  	font-weight: normal;
+}
+
 #poloska{
 	width: 50%;
 	height: 40px;
@@ -97,6 +104,9 @@ body{
 &:hover{
 	background-color: #FF9C00;
 }
+&:active{
+	margin-top: 9px;
+}
 }
 
 #user_menu{
@@ -105,8 +115,8 @@ body{
 	border: solid 3px #0075FF;
 	border-left: none;
 	position: fixed;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	transition-duration: 1s;
 
 & a {
@@ -131,10 +141,10 @@ body{
 }
 
 #user_menu.active{
-	width: 0%;
-	height: 0%;
+	width: 0;
+	height: 0;
 	border: none;
-	font-size: 0px;
+	font-size: 0;
 }
 
 #user_menu ul li:first-child{
@@ -256,8 +266,8 @@ body{
 	border: solid 3px #0075FF;
 	border-right: none;
 	position: fixed;
-	top: 0px;
-	right: 0px;
+	top: 0;
+	right: 0;
 	transition-duration: 1s;
 }
 
@@ -269,7 +279,7 @@ body{
 }
 
 #input_search {
-	width: 80%;
+	width: 90%;
   	height: 25px;
   	border: solid 3px #0075FF;
   	border-radius: 5px;
@@ -284,22 +294,27 @@ body{
 
 #button_search {
   	height: 25px;
-  	width: 15%;
+  	width: 90%;
   	background-color: #0075FF;
   	border-radius: 5px;
   	border: none;
   	outline: none;
   	color: white;
+  	margin-left: 10px;
+  	margin-top: 10px;
   	cursor: pointer;
 
 &:hover{
 	background-color: #FF9C00;
 }
+&:active{
+	margin-top: 9px;
+}
 }
 
 #user_trends.active{
-	width: 0%;
-	height: 0%;
+	width: 0;
+	height: 0;
 	border: none;
 }
 
@@ -350,7 +365,7 @@ body{
 
 #post_username{
 	position: relative;
-	left: 0px;
+	left: 0;
 	margin-left: 10px;
 	font-family: 'Open Sans', sans-serif;
 	color: #0000FF;
@@ -410,8 +425,15 @@ body{
 	cursor: pointer;
 	color: white;
 	width: 60px;
+	position: relative;
 & span{
 	color: white;
+}
+&:active{
+	top: -1px;
+}
+&:hover{
+	background-color: #FF9C00;
 }
 }
 
@@ -420,16 +442,16 @@ body{
 }
 
 ::-webkit-scrollbar-button {
-  background-image: url("");
   background-repeat: no-repeat;
   width: 5px;
-  height: 0px;
+  height: 0;
   cursor: pointer;
 }
 
 ::-webkit-scrollbar-track {
   background-color: black;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -447,7 +469,6 @@ body{
 }
 
 ::-webkit-resizer {
-  background-image: url("");
   background-repeat: no-repeat;
   width: 7px;
   height: 20px;
@@ -458,61 +479,21 @@ body{
   width: 10px;
   cursor: pointer;
 }
-
-@media screen and (max-width: 750px){
-	#user_menu{
-    	display: none;
-	}
-
-	#form_block{
-		display: none;
-		border-left: solid 3px #0075FF;
-	}
-
-	#user_trends{
-		display: none;
-	}
-
-	#post_block{
-		width: 80%;
-		margin-top: 0px;
-		border-left: solid 3px #0075FF;
-		border-right: solid 3px #0075FF;
-	}
-
-	#poloska{
-		width: 80%;
-		border-left: solid 3px #0075FF;
-		border-right: solid 3px #0075FF;
-		text-align: center;
-	}
-
-	.post_img_container{
-		height: 200px;
-	}
-
-	#post_image{
-		height: 100%;
-		width: 100%;
-	}
-
-	#post_date{
-		font-size: 14px;
-	}
-
-	#br_lowsize{
-		display: none;
-	}
+@media screen and (max-width: 768px){
 
 	#menu_lowsize_btn{
 	position: absolute;
-    left: 90px;
-    top: 3px;
+	left: 11%;
+	top: 0.5%;
     background: #0075FF;
     padding: 5px;
     border-radius: 12px;
     cursor: pointer;
     transition-duration: 1s;
+	
+	&:hover{
+	background-color: #FFC900;
+	}
 	}
 
 	#menu_lowsize_btn span{
@@ -523,30 +504,46 @@ body{
     margin: 4px 0;
 	}
 
-}
-
-@media screen and (max-width: 490px){
-	#menu_lowsize_btn{
-		left: 60px;
-	}
-}
-
-@media screen and (min-width: 750px){
-	#menu_lowsize{
+	#user_menu{
 		display: none;
 	}
-}
 
-@media screen and (max-width: 1600px) {
-	#input_search{
-		width: 90%;
+	#user_trends{
+		display: none;
 	}
 
-	#button_search{
-		width: 90%;
-		position: absolute;
-		right:7%;
-		top: 7%;
+	#poloska{
+		width: 80%;
+		border-left: solid 3px #0075FF;
+		border-right: solid 3px #0075FF;
+		border-bottom: solid 3px #0075FF;
+		text-align: center;
+	}
+
+	#form_block{
+		display: none;
+	}
+
+	#post_block{
+		width: 80%;
+		border-left: solid 3px #0075FF;
+		border-right: solid 3px #0075FF;
+	}
+
+	.post_img_container {
+    height: 200px;
+    width: 100%;
+  	}
+
+ 	#post_image {
+    height: 100%;
+    width: 50%;
+  	}
+}
+
+@media screen and (min-width: 768px){
+	#menu_lowsize{
+		display: none;
 	}
 }
 
@@ -558,11 +555,11 @@ body{
 	top: 42px;
 	transition-duration: 1s;
 	z-index: 99;
-	font-size: 0px;
+	font-size: 0;
 	text-align: left;
 
 & ul li:first-child{
-	color: #0075FF;
+	color: white;
 	font-size: 1.95em;
 	list-style: none;
 	font-family: "ZIX";
@@ -576,18 +573,18 @@ body{
 }
 
 & ul li a{
-	color: white;
+	color: #0075FF;
 	text-decoration: none;
 	cursor: pointer;
 }
 
 & ul li a:hover{
-	color: #0075FF;
+	color: #FFC900;
 }
 }
 
 #menu_lowsize.active{
-	height: 300px;
+	height: 400px;
 	font-size: 12px;
 	border: solid 3px #0075FF;
 }
@@ -596,7 +593,7 @@ body{
 	position: relative;
 	top: -10px;
 	display: none;
-	border-top:  solid 3px #0075FF;
+	border-top:  solid 1px #0075FF;
 & label{
 }
 }
@@ -610,7 +607,9 @@ body{
 	background: none;
 	color: black;
 	outline: none;
-
+&::placeholder{
+	color: black;
+}
 }
 
 #form_create_post_lowsize.active{
@@ -618,21 +617,83 @@ body{
 }
 
 .crp_button_lowsize{
+	position: relative;
+	float: right;
+	margin-right: 5px;
 	height: 30px;
 	width: 120px;
-	position: relative;
-	top: -10px;
-	float: right;
 	color: white;
 	background-color: #0075FF;
 	outline: none;
 	border: none;
 	border-radius: 20px;
 	font-family: "ZIX";
-	margin-right: 10px;
 	cursor: pointer;
 
 &:hover{
 	background-color: #FFC900;
 }
+}
+
+#switcher_box{
+	width: 70%;
+	height: 30px;
+	border: solid 3px #0030FF;
+	background-color: #e6e3df;
+	box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+	border-radius: 20px;
+	margin: 0 auto;
+}
+
+#switcher_box.active{
+	display: none;
+}
+
+#switcher_box_lowsize{
+	width: 50%;
+	height: 30px;
+	border: solid 3px #0030FF;
+	background-color: #e6e3df;
+	box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+	border-radius: 20px;
+	margin-left: 10px;
+	display: none;
+}
+
+#switcher_box_lowsize.active{
+	display: block;
+}
+
+#switcher_lowsize{
+	position: relative;
+	height: 100%;
+	animation-name: switch;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	border: none;
+	outline: none;
+	background-color: #0075FF;
+	border-radius: 20px;
+	color: white
+}
+
+#switcher{
+	position: relative;
+	height: 100%;
+	animation-name: switch;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	border: none;
+	outline: none;
+	background-color: #0075FF;
+	border-radius: 20px;
+	color: white;
+&:hover{
+	background-color: #0090FF;
+}
+}
+
+@keyframes switch {
+	0%{left: 50%;}
+	100%{left: 0;}
 }

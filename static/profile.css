@@ -1,0 +1,205 @@
+body {
+  background-color: #0A0A0A;
+  margin: 0; }
+
+@font-face {
+  font-family: "ZIX";
+  src: url("/static/fonts/ZIX.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+#poloska {
+  position: fixed;
+  left: 25%;
+  width: 75%;
+  height: 40px;
+  border: solid 1px #939393;
+  text-align: center; }
+  #poloska span {
+    position: relative;
+    top: 8px;
+    font-family: ZIX;
+    font-size: 24px;
+    color: white; }
+
+#user_menu {
+  width: 24.9%;
+  height: 99.7%;
+  border: solid 1px #939393;
+  border-left: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition-duration: 1s; }
+  #user_menu ul li:first-child {
+    margin-left: 10%;
+    color: #0075FF;
+    font-size: 1.95em;
+    list-style: none;
+    padding: 25px 10px 10px 10px;
+    font-family: "ZIX"; }
+  #user_menu ul li:not(:first-child) {
+    width: 90%;
+    margin-left: 10%;
+    font-size: 1.1em;
+    list-style: none;
+    padding: 15px 10px;
+    font-family: 'Open Sans', sans-serif; }
+  #user_menu ul li a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer; }
+  #user_menu ul li a:hover {
+    color: #0075FF; }
+
+#user_info_block {
+  width: 75%;
+  height: 200px;
+  position: absolute;
+  left: 25.0%;
+  top: 6.4%;
+  background-image: url("/media/sueta/suetaBK.jpg");
+  background-size: cover; }
+
+#img_container {
+  position: absolute;
+  left: 5%;
+  top: 60%; }
+  #img_container img {
+    border: solid 2px #0075FF;
+    border-radius: 50%;
+    width: 170px;
+    height: 170px; }
+
+#user_info {
+  width: 76.3%;
+  height: 100px;
+  position: absolute;
+  top: 100%;
+  left: 23%; }
+  #user_info span {
+    position: relative;
+    top: 10px;
+    left: 5px;
+    color: #0075FF;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px; }
+
+#user_menu_lsz_btn {
+  position: absolute;
+  left: 5%;
+  top: 0.5%;
+  background: #0075FF;
+  padding: 5px;
+  border-radius: 12px;
+  cursor: pointer; }
+  #user_menu_lsz_btn:hover {
+    background-color: #FFC900; }
+  #user_menu_lsz_btn span {
+    display: block;
+    width: 20px;
+    height: 3px;
+    background-color: black;
+    margin: 4px 0; }
+
+#user_menu_lsz {
+  display: none;
+  z-index: 99;
+  text-align: center; }
+  #user_menu_lsz ul li:first-child {
+    color: #0075FF;
+    font-size: 30px;
+    list-style: none;
+    font-family: "ZIX";
+    margin-right: 30px; }
+  #user_menu_lsz ul li:not(:first-child) {
+    font-size: 18px;
+    list-style: none;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 30px; }
+  #user_menu_lsz ul li a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer; }
+  #user_menu_lsz ul li a:hover {
+    color: #0075FF; }
+
+#user_menu_lsz.active {
+  display: block;
+  width: 99.5%;
+  height: 300px;
+  position: absolute;
+  top: 6.4%;
+  border: solid 1px #939393;
+  background-color: #0A0A0A; }
+
+#edit {
+  width: 20%;
+  height: 50px;
+  position: absolute;
+  top: 25%;
+  left: 70%;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  font-family: ZIX;
+  font-size: 20px;
+  color: white;
+  background-color: #0075FF; }
+  #edit:hover {
+    background-color: #FF9C00; }
+  #edit:active {
+    top: 26%; }
+
+#sueta {
+  width: 74.9%;
+  height: 0;
+  position: absolute;
+  top: 52.3%;
+  left: 25%;
+  font-size: 0;
+  background-color: red; }
+  #sueta input {
+    display: none; }
+  #sueta textarea {
+    display: none; }
+  #sueta button {
+    display: none; }
+
+#sueta.active {
+  height: 300px;
+  font-size: 14px;
+  transition-duration: 1s;
+  background-color: red; }
+
+@media screen and (max-width: 768px) {
+  #poloska {
+    width: 100%;
+    left: 0; }
+
+  #user_menu {
+    display: none; }
+
+  #user_info_block {
+    width: 100%;
+    left: 0; }
+
+  #img_container {
+    left: 30%; }
+
+  #user_info {
+    width: 98.3%;
+    left: 0;
+    top: 100%;
+    margin-top: 95px;
+    text-align: center; }
+
+  #edit {
+    display: none; } }
+@media screen and (min-width: 768px) {
+  #user_menu_lsz_btn {
+    display: none; }
+
+  #user_menu_lsz.active {
+    display: none; } }
+
+/*# sourceMappingURL=profile.css.map */

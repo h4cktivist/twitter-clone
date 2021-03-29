@@ -6,6 +6,8 @@
 
     <title>Main page</title>
 
+    <link rel="icon" href="/media/faviconca.ico" type="image/x-icon">
+
     {% if request.user.username %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="{% static 'like.js' %}" defer></script>
@@ -21,6 +23,8 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 
@@ -42,13 +46,26 @@
 
     <div id="menu_lowsize">
         <ul>
-            <li>Menu</li>
+            <li style="color: #0075FF;">Menu</li>
             <li><a href="{% url 'index' %}" style="color: #0075FF;">Home</a></li>
             <li><a href="{% url 'profile' %}">My Profile</a></li>
             <li><a href="{% url 'followers' %}">Followers</a></li>
         </ul>
 
         <br>
+
+        <form method="post" action="{% url 'theme_switch' %}">
+        {% csrf_token %}
+        <div id="switcher_box_lowsize">
+
+        <button type="submit" id="switcher_lowsize">Switch Theme</button>
+
+        </div>
+
+    </form>
+
+    <br>
+    <br>
 
         {% if form_adaptive %}
 
@@ -150,7 +167,12 @@
     <!-- Kostil theme switcher by h4cktivist -->
     <form method="post" action="{% url 'theme_switch' %}">
         {% csrf_token %}
-        <button type="submit">Switch Theme</button>
+        <div id="switcher_box">
+
+        <button type="submit" id="switcher">Switch Theme</button>
+
+        </div>
+
     </form>
 
     </div>
