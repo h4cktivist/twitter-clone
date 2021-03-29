@@ -15,6 +15,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <style type="text/css">
+        #user_info_block {
+            background-image: url({{ user.profile.bg_image.url }});
+        }
+    </style>
+
 </head>
 <body>
 
@@ -64,9 +70,11 @@
         <p>{{ message }}</p>
     {% endfor %}
 
+
     <div id="user_info_block">
 
         <div id="img_container">
+
 
             <img src="{{ user.profile.image.url }}"><br>
 
@@ -76,7 +84,7 @@
             <span>Hello, {{ request.user }}</span><br>
             <span>{{ request.user.email }}</span><br>
             <span>You are following {{ user.profile.following_count }} users</span><br>
-            <span>About me: Ya hmtl programmist</span><br>
+            <span>About me: {{ user.profile.bio }}</span><br>
             <button id="edit" onclick="openEditBlock()">Edit</button>
         </div>
 
@@ -102,6 +110,18 @@
 
     <br><br>
 
+        <!-- Adaptive form -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ u_form_ad.as_p }}
+        <br>
+        {{ p_form_ad.as_p }}
+
+        <button type="submit">Update</button>
+    </form>
+
     </div>
+
 </body>
 </html>
