@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.http import Http404
 from django.contrib import messages
 
-from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm, UserUpdateFormAdaptive, ProfileUpdateFormAdaptive
+from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
 
 from django.contrib.auth.models import User
 from .models import Profile
@@ -18,16 +18,9 @@ def profile(request):
         user_upd_form = UserUpdateForm(request.POST, instance=request.user)
         profile_upd_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
 
-        user_upd_form_ad = UserUpdateFormAdaptive(request.POST, instance=request.user)
-        profile_upd_form_ad = ProfileUpdateFormAdaptive(request.POST, request.FILES, instance=request.user.profile)
-
         if user_upd_form.is_valid() and profile_upd_form.is_valid():
             user_upd_form.save()
             profile_upd_form.save()
-
-        elif user_upd_form_ad.is_valid() and profile_upd_form_ad.is_valid():
-            user_upd_form_ad.save()
-            profile_upd_form_ad.save()
 
         messages.success(request, 'Account information has been updated!')
         return redirect('profile')
@@ -36,14 +29,9 @@ def profile(request):
         user_upd_form = UserUpdateForm(instance=request.user)
         profile_upd_form = ProfileUpdateForm(instance=request.user.profile)
 
-        user_upd_form_ad = UserUpdateFormAdaptive(instance=request.user)
-        profile_upd_form_ad = ProfileUpdateFormAdaptive(instance=request.user.profile)
-
     context = {
         'u_form': user_upd_form,
         'p_form': profile_upd_form,
-        'u_form_ad': user_upd_form_ad,
-        'p_form_ad': profile_upd_form_ad
     }
     return render(request, 'profile.html', context)
 
