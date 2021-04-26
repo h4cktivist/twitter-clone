@@ -37,24 +37,3 @@ class ProfileUpdateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['bio'].widget.attrs.update({'placeholder': 'Say something about yourself'})
-
-
-class UserUpdateFormAdaptive(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['username', 'email']
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'placeholder': 'Username'})
-        self.fields['email'].widget.attrs.update({'placeholder': 'Email'})
-
-
-class ProfileUpdateFormAdaptive(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ['image', 'bio', 'bg_image']
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['bio'].widget.attrs.update({'placeholder': 'Say something about yourself'})
