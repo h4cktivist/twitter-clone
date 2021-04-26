@@ -154,16 +154,6 @@
             <li><a href="{% url 'followers' %}">Followers</a></li>
         </ul>
 
-        {% if request.user.username %}
-            <div id="user_info">
-
-                <img class="user_info_avatar" src="{{ request.user.profile.image.url }}">
-                <a href="{% url 'profile' %}" id="user_info_name" style="color: white;">{{ request.user.username }}</a>
-
-            </div>
-        {% endif %}
-
-
     <!-- Kostil theme switcher by h4cktivist -->
     <form method="post" action="{% url 'theme_switch' %}">
         {% csrf_token %}
@@ -227,15 +217,16 @@
 
         {% endif %}
 
+<!-- Huita kakaya to
 
-       <!-- {% if p.was_published_recently %} 
-
-            <p>New post!</p>
-
+        {% if p.was_published_recently %}
+            <div id="msg">
+                <p>New Post!</p>
+                <div class="progress"></div>
+            </div>
         {% endif %}
 
         -->
-
         <!-- Like button form -->
 
         <br>

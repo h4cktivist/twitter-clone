@@ -1,6 +1,7 @@
 body {
   background-color: #0A0A0A;
-  margin: 0; }
+  margin: 0;
+  overflow-x: hidden; }
 
 @font-face {
   font-family: "ZIX";
@@ -8,9 +9,9 @@ body {
   font-style: normal;
   font-weight: normal; }
 #poloska {
-  position: fixed;
-  left: 25%;
-  width: 75%;
+  position: absolute;
+  left: 25.0%;
+  width: 74.8%;
   height: 40px;
   border: solid 1px #939393;
   text-align: center; }
@@ -19,7 +20,7 @@ body {
     top: 8px;
     font-family: ZIX;
     font-size: 24px;
-    color: white; }
+    color: #0075FF; }
 
 #user_menu {
   width: 24.9%;
@@ -65,17 +66,21 @@ body {
   left: 5%;
   top: 60%; }
   #img_container img {
-    border: solid 2px #0075FF;
+    border: solid 3px #0075FF;
     border-radius: 50%;
     width: 170px;
     height: 170px; }
+
+#avatar.active {
+  box-shadow: 1px 0 24px 2px #0075FF; }
 
 #user_info {
   width: 76.3%;
   height: 100px;
   position: absolute;
   top: 100%;
-  left: 23%; }
+  left: 23%;
+  overflow-wrap: break-word; }
   #user_info span {
     position: relative;
     top: 10px;
@@ -83,6 +88,9 @@ body {
     color: #0075FF;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px; }
+  #user_info #about {
+    width: 70%;
+    text-overflow: clip; }
 
 #user_menu_lsz_btn {
   position: absolute;
@@ -151,26 +159,142 @@ body {
     top: 26%; }
 
 #sueta {
-  width: 74.9%;
+  width: 70%;
   height: 0;
   position: absolute;
   top: 52.3%;
-  left: 25%;
+  left: 28%;
+  margin-top: 10%;
+  margin-bottom: 100px;
   font-size: 0;
-  background-color: red; }
-  #sueta input {
-    display: none; }
-  #sueta textarea {
-    display: none; }
-  #sueta button {
-    display: none; }
+  text-align: center;
+  color: white; }
+  #sueta #user_input {
+    display: none;
+    margin-top: 10px;
+    outline: none;
+    width: 25%;
+    height: 25px;
+    border: solid 2px #0075FF;
+    border-radius: 10px;
+    background: none;
+    color: white; }
+    #sueta #user_input:hover {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
+    #sueta #user_input:focus {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
+  #sueta #user_input_bio {
+    display: none;
+    outline: none;
+    border: none;
+    resize: none;
+    border: solid 2px #0075FF;
+    border-radius: 10px;
+    background: none;
+    color: white; }
+    #sueta #user_input_bio:hover {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
+    #sueta #user_input_bio:focus {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
 
 #sueta.active {
-  height: 300px;
+  height: 500px;
   font-size: 14px;
-  transition-duration: 1s;
-  background-color: red; }
+  transition-duration: 0.7s;
+  border-radius: 20px;
+  animation-name: border;
+  animation-duration: 0.8s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards; }
+  #sueta.active #user_input {
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 25%;
+    opacity: 0;
+    animation-name: border_input;
+    animation-delay: 1s;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards; }
+  #sueta.active span {
+    font-family: ZIX;
+    font-size: 14px;
+    position: relative;
+    top: 30px;
+    opacity: 0;
+    animation-name: border_input;
+    animation-delay: 1s;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards; }
+  #sueta.active #user_input_bio {
+    display: block;
+    margin: 0 auto;
+    opacity: 0;
+    animation-name: border_input;
+    animation-delay: 1s;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards; }
 
+#msg {
+  width: 70%;
+  height: 60px;
+  position: absolute;
+  top: 10%;
+  left: 17%;
+  text-align: center;
+  border: solid 4px #0075FF;
+  border-radius: 12px;
+  text-shadow: 0 0 1px #00acee;
+  background-color: #0A0A0A;
+  font-size: 20px;
+  color: #00acee;
+  transition: 1s;
+  z-index: 99; }
+
+.msg p {
+  font-weight: bold;
+  margin: 0; }
+
+.progress {
+  width: 0;
+  height: 5px;
+  background: #00acee;
+  position: absolute;
+  margin-top: 5px;
+  bottom: 5px;
+  left: 3%;
+  border-radius: 12px;
+  animation-name: progress;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  box-shadow: 1px 0px 24px 2px #0075FF; }
+
+@keyframes progress {
+  0% {
+    width: 0%; }
+  100% {
+    width: 95%; } }
+@keyframes border {
+  25% {
+    border-top: solid 3px #0075FF; }
+  50% {
+    border-top: solid 3px #0075FF;
+    border-right: solid 3px #0075FF; }
+  75% {
+    border-top: solid 3px #0075FF;
+    border-right: solid 3px #0075FF;
+    border-bottom: solid 3px #0075FF; }
+  100% {
+    border-top: solid 3px #0075FF;
+    border-right: solid 3px #0075FF;
+    border-bottom: solid 3px #0075FF;
+    border-left: solid 3px #0075FF;
+    box-shadow: 1px 0px 24px 2px #0075FF; } }
+@keyframes border_input {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 @media screen and (max-width: 768px) {
   #poloska {
     width: 100%;
@@ -194,12 +318,54 @@ body {
     text-align: center; }
 
   #edit {
-    display: none; } }
+    top: 100%;
+    left: 40%; }
+    #edit:active {
+      top: 99%; }
+
+  #sueta.active {
+    left: 14%;
+    top: 90%;
+    transition-duration: 2s; }
+    #sueta.active #user_input {
+      width: 70%; } }
 @media screen and (min-width: 768px) {
   #user_menu_lsz_btn {
     display: none; }
 
   #user_menu_lsz.active {
     display: none; } }
+::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  width: 5px;
+  height: 0;
+  cursor: pointer; }
+
+::-webkit-scrollbar-track {
+  background-color: black;
+  cursor: pointer;
+  border-radius: 10px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #939393;
+  background-image: url("https://yraaa.ru/_pu/24/59610063.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer; }
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0075FF;
+  cursor: pointer; }
+
+::-webkit-resizer {
+  background-repeat: no-repeat;
+  width: 7px;
+  height: 20px;
+  cursor: pointer; }
+
+::-webkit-scrollbar {
+  width: 10px;
+  cursor: pointer; }
 
 /*# sourceMappingURL=profile.css.map */

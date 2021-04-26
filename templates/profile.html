@@ -67,16 +67,30 @@
     </div>
 
    {% for message in messages %}
+   <div id="msg">
         <p>{{ message }}</p>
+       <div class="progress"></div>
+   </div>
     {% endfor %}
 
+    <script type="text/javascript">
+
+        let a = document.getElementById('msg');
+
+        function sneak() {
+            document.getElementById('msg').style.opacity = '0';
+        }
+
+        setTimeout(sneak, 5000);
+
+    </script>
 
     <div id="user_info_block">
 
         <div id="img_container">
 
 
-            <img src="{{ user.profile.image.url }}"><br>
+            <img id="avatar" src="{{ user.profile.image.url }}"><br>
 
         </div>
 
@@ -84,13 +98,16 @@
             <span>Hello, {{ request.user }}</span><br>
             <span>{{ request.user.email }}</span><br>
             <span>You are following {{ user.profile.following_count }} users</span><br>
-            <span>About me: {{ user.profile.bio }}</span><br>
+            <div id="about">
+                <span>About me: {{ user.profile.bio }}</span><br>
+            </div>
             <button id="edit" onclick="openEditBlock()">Edit</button>
         </div>
 
         <script type="text/javascript">
             function openEditBlock() {
                 document.getElementById("sueta").classList.toggle("active");
+                document.getElementById("avatar").classList.toggle("active");
             }
         </script>
 
@@ -100,17 +117,22 @@
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
-        {{ u_form.as_p }}
+        <span>Username</span>
+        {{ u_form.username}}
+        <span>Email Adress</span>
+        {{ u_form.email }}
         <br>
-        {{ p_form.as_p }}
-
-        <button type="submit">Update</button>
+        <span>Biography</span>
+        <br>
+        <br>
+        <br>
+        {{ p_form.bio }}
+        <button type="submit" id="user_input">Update</button>
     </form>
 
     <br><br>
 
-        <!-- Adaptive form -->
+        <!-- Adaptive form
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
@@ -120,7 +142,7 @@
 
         <button type="submit">Update</button>
     </form>
-
+-->
     </div>
 
 </body>
