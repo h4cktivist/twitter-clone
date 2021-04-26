@@ -175,61 +175,6 @@ body{
 	color: #0075FF;
 }
 
-#user_info{
-	position: relative;
-   	top: 45%;
-   	width:70%;
-   	height:70px;
-   	margin: 0 auto;
-   	border-radius: 20px;
-   	background-color: #0075FF;
-   	transition-duration: 1s;
-   	animation-name: hide_info_block_before;
-	animation-duration: 0.5s;
-}
-
-.user_info_avatar{
-	border-radius: 50%;
-	width: 50px;
-	height: 40px;
-	margin-left: 10px;
-	margin-top: 15px;
-}
-
-#user_info_name{
-	position: relative;
-	bottom: 15px;
-	margin-left: 5px;
-	font-family: 'Open Sans', sans-serif;
-}
-
-#user_info_name{
-	font-size: 18px;
-}
-
-#user_info.active{
-	display: none;
-}
-
-#user_info_name.active{
-	display: none;
-}
-
-@keyframes hide_info_block {
-	0%{opacity: 0;}
-	25%{opacity: 0;}
-	50%{opacity: 0;}
-	75%{opacity: 0;}
-	100%{opacity: 1;}
-}
-
-@keyframes hide_info_block_before {
-	0%{opacity: 0;}
-	25%{opacity: 0;}
-	50%{opacity: 0;}
-	75%{opacity: 0;}
-	100%{opacity: 1;}
-}
 
 #menu_btn{
 	position: absolute;
@@ -693,7 +638,57 @@ body{
 }
 }
 
+#switcher.active{
+	display: none;
+}
+
 @keyframes switch {
 	0%{left: 8%;}
 	100%{left: 58%;}
+}
+
+#msg{
+	width: 70%;
+	height: 60px;
+	position: absolute;
+	top: 10%;
+	left: 17%;
+	text-align: center;
+	border: solid 4px #0075FF;
+	border-radius: 12px;
+	text-shadow: 0 0 1px #00acee;
+	background-color: red;
+	font-size: 20px;
+	color: #00acee;
+	transition: 1s;
+	z-index: 99;
+}
+
+.msg p {
+	font-weight: bold;
+	margin: 0;
+}
+
+.progress {
+	width: 0;
+	height: 5px;
+	background: #00acee;
+	position: absolute;
+	margin-top: 5px;
+	bottom: 5px;
+	left: 3%;
+	border-radius: 12px;
+	animation-name: progress;
+	animation-duration: 5s;
+	animation-fill-mode: forwards;
+	box-shadow:1px 0px 24px 2px #0075FF;
+}
+
+@keyframes progress {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 95%;
+	}
 }

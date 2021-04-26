@@ -1,79 +1,80 @@
 body {
   background-color: #121010;
   margin: 0;
-  cursor: default;
-}
+  cursor: default; }
 
 @font-face {
   font-family: "ZIX";
   src: url("/static/fonts/ZIX.ttf") format("truetype");
   font-style: normal;
-  font-weight: normal;
-}
+  font-weight: normal; }
 .poloska {
   width: 100%;
   height: 30px;
-  background-color: #00acee;
-  box-shadow: 1px 0px 10px 0px #00acee;
-}
+  background-color: #0075FF;
+  box-shadow: 1px 0 10px 0 #0075FF; }
 
 h1 {
   text-align: center;
   color: #00acee;
   letter-spacing: 5px;
-  animation: h1 0.5s ease-in-out infinite alternate;
-}
-h1:hover {
-  color: white;
-}
+  animation: h1 .5s ease-in-out infinite alternate; }
+  h1:hover {
+    color: white;
+    animation: dvizh .1s ease-in-out infinite alternate; }
 
 .form_block {
-  background-color: #e3f1fc;
+  background: none;
   width: 600px;
   min-height: 400px;
   max-height: 500px;
   margin: 0 auto;
   border-radius: 20px;
-  box-shadow: 1px 0px 10px 0px rgba(50, 50, 50, 0.75);
-}
-.form_block form {
-  text-align: center;
-  position: relative;
-  padding: 20px;
-}
-.form_block form input {
-  margin-bottom: 20px;
-  height: 25px;
-  width: 200px;
-  border: solid 2px #00acee;
-  border-radius: 5px;
-  outline: none;
-}
-.form_block form input:focus {
-  box-shadow: 1px 0px 5px 0px #00acee;
-}
-.form_block .button {
-  background-color: #e3f1fc;
-  color: gray;
-  height: 40px;
-  cursor: pointer;
-}
-.form_block .button:focus {
-  box-shadow: none;
-}
-.form_block .button:active {
-  position: relative;
-  bottom: 3px;
-}
+  animation-name: border;
+  animation-duration: 0.8s;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards; }
+  .form_block form {
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    opacity: 0;
+    animation-name: border_input;
+    animation-delay: 1s;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards; }
+  .form_block form input {
+    margin-bottom: 20px;
+    height: 25px;
+    width: 200px;
+    border: solid 2px #0075FF;
+    border-radius: 5px;
+    outline: none; }
+  .form_block form input:focus {
+    box-shadow: 1px 0 5px 0 #0075FF; }
+  .form_block .button {
+    background-color: #e3f1fc;
+    color: gray;
+    height: 40px;
+    cursor: pointer; }
+  .form_block .button:focus {
+    box-shadow: none; }
+  .form_block .button:active {
+    position: relative;
+    bottom: 3px; }
 
 .Log_in {
   text-align: center;
   position: relative;
   bottom: 40px;
-}
-.Log_in a {
-  color: #00acee;
-}
+  animation-name: border_input;
+  animation-delay: 1s;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  color: white; }
+  .Log_in a {
+    color: #0075FF; }
 
 #msg {
   width: 700px;
@@ -91,13 +92,11 @@ h1:hover {
   font-size: 20px;
   color: #00acee;
   transition: 1s;
-  z-index: 99;
-}
+  z-index: 99; }
 
 .msg p {
   font-weight: bold;
-  margin: 0;
-}
+  margin: 0; }
 
 .progress {
   width: 0;
@@ -110,62 +109,72 @@ h1:hover {
   border-radius: 12px;
   animation-name: progress;
   animation-duration: 5s;
-  animation-fill-mode: forwards;
-}
+  animation-fill-mode: forwards; }
 
 #anim {
-  animation: neonchik 5s steps(1, start) infinite reverse;
-}
+  animation: neonchik 5s steps(1, start) infinite reverse; }
 
 /* keyframes */
 @keyframes neonchik {
   0% {
-    color: #00acee;
-    text-shadow: 0 0 3px #00acee, 0 0 3px #00acee;
-  }
+    color: #0075FF;
+    text-shadow: 0 0 3px #0075FF, 0 0 3px #0075FF; }
   20% {
-    color: #00acee;
-  }
+    color: #0075FF; }
   30% {
-    color: white;
-  }
+    color: white; }
   40% {
-    color: #00acee;
-  }
+    color: #0075FF; }
   60% {
-    color: white;
-  }
+    color: white; }
   90% {
-    color: #00acee;
-  }
+    color: #0075FF; }
   95% {
-    color: white;
-  }
+    color: white; }
   100% {
-    color: #00acee;
-  }
-}
+    color: #0075FF; } }
 @keyframes h1 {
   0% {
-    text-shadow: 0 0 1px #00acee;
-  }
+    text-shadow: 0 0 1px #00acee; }
   100% {
-    text-shadow: 0 0 3px #00acee;
-  }
-}
+    text-shadow: 0 0 3px #00acee; } }
+@keyframes dvizh {
+  0% {
+    margin-right: 2px; }
+  100% {
+    margin-left: 4px; } }
 @keyframes progress {
   0% {
-    width: 0%;
-  }
+    width: 0; }
   100% {
-    width: 95%;
-  }
-}
+    width: 95%; } }
+@keyframes border {
+  25% {
+    border-top: solid 3px #0075FF; }
+  50% {
+    border-top: solid 3px #0075FF;
+    border-right: solid 3px #0075FF; }
+  75% {
+    border-top: solid 3px #0075FF;
+    border-right: solid 3px #0075FF;
+    border-bottom: solid 3px #0075FF; }
+  100% {
+    border-top: solid 3px #0075FF;
+    border-right: solid 3px #0075FF;
+    border-bottom: solid 3px #0075FF;
+    border-left: solid 3px #0075FF;
+    box-shadow: 1px 0 24px 2px #0075FF; } }
+@keyframes border_input {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 .errorlist {
   color: red;
   list-style-type: none;
   text-align: center;
   margin-left: 0;
   padding-left: 0;
-  text-shadow: 0 0 3px red, 0 0 1px red;
-}
+  text-shadow: 0 0 3px red, 0 0 1px red; }
+
+/*# sourceMappingURL=register.css.map */

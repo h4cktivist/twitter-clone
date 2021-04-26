@@ -5,8 +5,7 @@ function openMenu(){
 	document.getElementById("poloska").classList.toggle('active');
 	document.getElementById("user_trends").classList.toggle('active');
 	document.getElementById("menu_btn").classList.toggle('active');
-	document.getElementById("user_info").classList.toggle('active');
-	document.getElementById("user_info_name").classList.toggle('active');
+	document.getElementById("switcher").classList.toggle('active');
 	document.getElementById("switcher_box").classList.toggle('active');
 }
 
