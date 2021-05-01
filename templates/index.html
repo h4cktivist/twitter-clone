@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,7 +195,7 @@
                 <a href="{% url 'otherprofile' p.user.username %}" id="post_username">{{ p.user }}</a>
 
 
-        <span id="post_date">{{ p.publish_date }}</span>
+        <span id="post_date">{{ p.date|naturaltime }}</span>
 
         <br>
 
