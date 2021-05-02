@@ -200,8 +200,11 @@
         <br>
 
         <span id="post_text">{{ p.text }}</span>
-        
-        <a href="{% url 'detail' p.id %}" id="more">...More</a>
+
+        {% if p.user == request.user %}
+            <a href="{% url 'delete' p.id %}" id="more">Delete</a>
+            <a href="{% url 'edit' p.id %}" id="more">Edit</a>
+        {% endif %}
 
         <br>
 
@@ -218,16 +221,7 @@
 
         {% endif %}
 
-<!-- Huita kakaya to
 
-        {% if p.was_published_recently %}
-            <div id="msg">
-                <p>New Post!</p>
-                <div class="progress"></div>
-            </div>
-        {% endif %}
-
-        -->
         <!-- Like button form -->
 
         <br>
@@ -255,6 +249,27 @@
             <span class="like-count{{ p.id }}">{{ p.likes }}</span>
 
         </form>
+
+        <br>
+
+        <!-- Comment add form -->
+        <form method="post" action="{% url 'comment' p.id %}">
+            {% csrf_token %}
+            <textarea required name="text" placeholder="Enter your comment"></textarea></br>
+            <button type="submit">Comment</button>
+       </form>
+
+        <!-- Comments -->
+        <div id="comments">
+            {% if p.comment_set %}
+                {% for c in p.comment_set.all %}
+                    <p>
+                        <a href="{% url 'otherprofile' p.user.username %}"><strong>{{ c.user }}</strong></a>
+                        <p>{{ c.text }}</p>
+                    </p>
+                {% endfor %}
+            {% endif %}
+        </div>
 
         <hr>
 

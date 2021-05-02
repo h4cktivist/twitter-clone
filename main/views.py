@@ -66,21 +66,6 @@ def following_users_posts(request):
     return render(request, 'index.html', context)
 
 
-def detail(request, post_id):
-    try:
-        p = Post.objects.get(id=post_id)
-    except:
-        raise Http404('Post Not Found!')
-
-    comments = p.comment_set.order_by('-date')
-
-    context = {
-        'post': p,
-        'comments': comments
-    }
-    return render(request, 'detail.html', context)
-
-
 @login_required(login_url='login')
 def edit(request, post_id):
     if request.method == 'POST':
@@ -121,7 +106,7 @@ def leave_comment(request, post_id):
 
     p.comment_set.create(user=request.user, text=request.POST.get('text'))
 
-    return redirect(reverse('detail', args=(p.id,)))
+    return redirect('index')
 
 
 @login_required(login_url='login')
