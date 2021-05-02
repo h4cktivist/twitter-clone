@@ -75,7 +75,7 @@ def edit(request, post_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Post has successfully edited')
-            return redirect(reverse('detail', args=(p.id,)))
+            return redirect('index')
 
     else:
         p = Post.objects.get(id=post_id)
@@ -85,7 +85,7 @@ def edit(request, post_id):
         'post': p,
         'form': form
     }
-    return render(request, 'edit.html', context)
+    return render(request, 'index.html', context)
 
 
 @login_required(login_url='login')
