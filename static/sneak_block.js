@@ -7,6 +7,7 @@ function openMenu(){
 	document.getElementById("menu_btn").classList.toggle('active');
 	document.getElementById("switcher").classList.toggle('active');
 	document.getElementById("switcher_box").classList.toggle('active');
+	document.getElementById("menu_lowsize_btn").classList.toggle('active');
 }
 
 function openLowSizeMenu(){
@@ -15,3 +16,8 @@ function openLowSizeMenu(){
 	document.getElementById('txtarea').classList.toggle('lowsize');
 	document.getElementById('switcher_box_lowsize').classList.toggle('active');
 }
+/*
+function comment(){
+	document.getElementById("comment_block").classList.toggle('active');
+}
+ */

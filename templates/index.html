@@ -90,8 +90,28 @@
 
 
     {% for message in messages %}
-        <p>{{ message }}</p> <!-- Уведомление о новом посте -->
+    <div id="msg">
+        <p>{{ message }}</p>
+        <div class="progress"></div>
+    </div>
     {% endfor %}
+
+    <script type="text/javascript">
+
+        let a = document.getElementById('msg').style;
+
+        function sneak() {
+            a.opacity = '0';
+            setTimeout(delsneak, 1000);
+        }
+
+        function delsneak() {
+            a.display = 'none';
+        }
+
+        setTimeout(sneak, 5000);
+
+    </script>
 
     {% if form %}
         <!-- Post creation form -->
@@ -215,7 +235,7 @@
         {% if p.image %}
         <div class="post_img_container">
 
-            <img id="post_image" src="{{ p.image.url }}">
+            <img id="post_image" src="{{ p.image.url }}" width="100%" height="100%">
 
         </div>
 
@@ -252,17 +272,21 @@
 
         <br>
 
+       <!-- <a onclick="comment()">Показать комментарии</a> -->
         <!-- Comment add form -->
-        <form method="post" action="{% url 'comment' p.id %}">
+        <form method="post" action="{% url 'comment' p.id %}" id="comment_form">
             {% csrf_token %}
-            <textarea required name="text" placeholder="Enter your comment"></textarea></br>
+            <textarea required name="text" placeholder="Enter your comment" maxlength="500"></textarea></br>
             <button type="submit">Comment</button>
        </form>
-
+        <div id="comment_block">
         <!-- Comments -->
         <div id="comments">
             {% if p.comment_set %}
                 {% for c in p.comment_set.all %}
+            <br>
+            <div id="comments_txt">
+
                     <p>
                         <a href="{% url 'otherprofile' p.user.username %}"><strong>{{ c.user }}</strong></a>
                         <p>{{ c.text }}</p>

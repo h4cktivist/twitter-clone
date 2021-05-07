@@ -1,96 +1,76 @@
-body{
-  background-color: #0A0A0A;
+body {
+  background-color: #CCCCFF;
   margin: 0;
-  overflow-x: hidden;
-}
+  overflow-x: hidden; }
 
 @font-face {
   font-family: "ZIX";
   src: url("/static/fonts/ZIX.ttf") format("truetype");
   font-style: normal;
-  font-weight: normal;
-}
-
-#poloska{
+  font-weight: normal; }
+#poloska {
   position: absolute;
   left: 25.0%;
   width: 74.8%;
   height: 40px;
-  border: solid 1px #939393;
-  text-align: center;
-  & span{
+  border: solid 2px #0075FF;
+  text-align: center; }
+  #poloska span {
     position: relative;
     top: 8px;
     font-family: ZIX;
     font-size: 24px;
-    color: #0075FF;
-  }
-}
+    color: #0075FF; }
 
 #user_menu {
   width: 24.9%;
   height: 99.7%;
-  border: solid 1px #939393;
+  border: solid 2px #0075FF;
   border-left: none;
   position: fixed;
   top: 0;
   left: 0;
-  transition-duration: 1s;
-
-  & ul li:first-child {
+  transition-duration: 1s; }
+  #user_menu ul li:first-child {
     margin-left: 10%;
     color: #0075FF;
     font-size: 1.95em;
     list-style: none;
     padding: 25px 10px 10px 10px;
-    font-family: "ZIX";
-  }
-
-  & ul li:not(:first-child) {
+    font-family: "ZIX"; }
+  #user_menu ul li:not(:first-child) {
     width: 90%;
     margin-left: 10%;
     font-size: 1.1em;
     list-style: none;
     padding: 15px 10px;
-    font-family: 'Open Sans', sans-serif;
-  }
-
-  & ul li a {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  & ul li a:hover {
+    font-family: 'Open Sans', sans-serif; }
+  #user_menu ul li a {
     color: #0075FF;
-  }
-}
+    text-decoration: none;
+    cursor: pointer; }
+  #user_menu ul li a:hover {
+    color: #FF9C00; }
 
-#user_info_block{
+#user_info_block {
   width: 75%;
   height: 200px;
   position: absolute;
   left: 25.0%;
-  top: 6.4%;
-  background-image: url("/media/sueta/suetaBK.jpg");
-  background-size: cover;
-}
+  top: 6.4%; }
 
-#img_container{
+#img_container {
   position: absolute;
   left: 5%;
-  top: 60%;
-  & img{
+  top: 60%; }
+  #img_container img {
     border: solid 3px #0075FF;
     border-radius: 50%;
     width: 170px;
-    height: 170px;
-}
-}
+    height: 170px; }
 
-#avatar.active{
-  box-shadow:1px 0 24px 2px #0075FF;
-}
+#avatar.active {
+  box-shadow: 1px 0 24px 2px #0075FF; }
 
 #user_info {
   width: 76.3%;
@@ -98,21 +78,17 @@ body{
   position: absolute;
   top: 100%;
   left: 23%;
-  overflow-wrap: break-word;
-
-  & span {
+  overflow-wrap: break-word; }
+  #user_info span {
     position: relative;
     top: 10px;
     left: 5px;
     color: #0075FF;
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-  }
-  & #about{
+    font-size: 14px; }
+  #user_info #about {
     width: 70%;
-    text-overflow: clip;
-  }
-}
+    text-overflow: clip; }
 
 #user_menu_lsz_btn {
   position: absolute;
@@ -121,62 +97,49 @@ body{
   background: #0075FF;
   padding: 5px;
   border-radius: 12px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #FFC900;
-  }
-
-  & span {
+  cursor: pointer; }
+  #user_menu_lsz_btn:hover {
+    background-color: #FFC900; }
+  #user_menu_lsz_btn span {
     display: block;
     width: 20px;
     height: 3px;
     background-color: black;
-    margin: 4px 0;
-  }
-}
+    margin: 4px 0; }
 
-#user_menu_lsz{
+#user_menu_lsz {
   display: none;
   z-index: 99;
-  text-align: center;
-  & ul li:first-child {
+  text-align: center; }
+  #user_menu_lsz ul li:first-child {
     color: #0075FF;
     font-size: 30px;
     list-style: none;
     font-family: "ZIX";
-    margin-right: 30px;
-  }
-
-  & ul li:not(:first-child) {
+    margin-right: 30px; }
+  #user_menu_lsz ul li:not(:first-child) {
     font-size: 18px;
     list-style: none;
     font-family: 'Open Sans', sans-serif;
-    margin-right: 30px;
-  }
-
-  & ul li a {
+    margin-right: 30px; }
+  #user_menu_lsz ul li a {
     color: white;
     text-decoration: none;
-    cursor: pointer;
-  }
+    cursor: pointer; }
+  #user_menu_lsz ul li a:hover {
+    color: #0075FF; }
 
-  & ul li a:hover {
-    color: #0075FF;
-  }
-}
-
-#user_menu_lsz.active{
+#user_menu_lsz.active {
   display: block;
   width: 99.5%;
   height: 300px;
   position: absolute;
   top: 6.4%;
-  border: solid 1px #939393;
-  background-color: #0A0A0A;
-}
+  left: 0.5%;
+  border: solid 2px #0075FF;
+  background-color: #CCCCFF; }
 
-#edit{
+#edit {
   width: 20%;
   height: 50px;
   position: absolute;
@@ -188,16 +151,13 @@ body{
   font-family: ZIX;
   font-size: 20px;
   color: white;
-  background-color: #0075FF;
-  &:hover{
-    background-color: #FF9C00;
-  }
-  &:active{
-    top: 26%;
-  }
-}
+  background-color: #0075FF; }
+  #edit:hover {
+    background-color: #FF9C00; }
+  #edit:active {
+    top: 26%; }
 
-#sueta{
+#sueta {
   width: 70%;
   height: 0;
   position: absolute;
@@ -207,9 +167,8 @@ body{
   margin-bottom: 100px;
   font-size: 0;
   text-align: center;
-  color: white;
-
-  & #user_input{
+  color: #0075FF; }
+  #sueta #user_input {
     display: none;
     margin-top: 10px;
     outline: none;
@@ -218,15 +177,12 @@ body{
     border: solid 2px #0075FF;
     border-radius: 10px;
     background: none;
-    color: white;
-    &:hover{
-      box-shadow:1px 0px 10px 2px #0075FF;
-    }
-    &:focus{
-      box-shadow:1px 0px 10px 2px #0075FF;
-    }
-  }
-  & #user_input_bio {
+    color: black; }
+    #sueta #user_input:hover {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
+    #sueta #user_input:focus {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
+  #sueta #user_input_bio {
     display: none;
     outline: none;
     border: none;
@@ -234,17 +190,12 @@ body{
     border: solid 2px #0075FF;
     border-radius: 10px;
     background: none;
-    color: white;
-
-    &:hover {
-      box-shadow: 1px 0px 10px 2px #0075FF;
-    }
-
-    &:focus {
-      box-shadow: 1px 0px 10px 2px #0075FF;
-    }
-  }
-  & #user_input_img {
+    color: black; }
+    #sueta #user_input_bio:hover {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
+    #sueta #user_input_bio:focus {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
+  #sueta #user_input_img {
     display: none;
     outline: none;
     border: none;
@@ -252,17 +203,11 @@ body{
     border: solid 2px #0075FF;
     border-radius: 10px;
     background: none;
-    color: white;
-
-    &:hover {
-      box-shadow: 1px 0px 10px 2px #0075FF;
-    }
-
-    &:focus {
-      box-shadow: 1px 0px 10px 2px #0075FF;
-    }
-  }
-}
+    color: black; }
+    #sueta #user_input_img:hover {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
+    #sueta #user_input_img:focus {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
 
 #sueta.active {
   height: 670px;
@@ -272,8 +217,8 @@ body{
   animation-name: border;
   animation-duration: 0.8s;
   animation-delay: 0.8s;
-  animation-fill-mode: forwards;
-  & #user_input{
+  animation-fill-mode: forwards; }
+  #sueta.active #user_input {
     display: block;
     margin: 0 auto;
     margin-top: 50px;
@@ -282,9 +227,8 @@ body{
     animation-name: border_input;
     animation-delay: 1s;
     animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-  }
-  & span{
+    animation-fill-mode: forwards; }
+  #sueta.active span {
     font-family: ZIX;
     font-size: 14px;
     position: relative;
@@ -293,18 +237,16 @@ body{
     animation-name: border_input;
     animation-delay: 1s;
     animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-  }
-  & #user_input_bio{
+    animation-fill-mode: forwards; }
+  #sueta.active #user_input_bio {
     display: block;
     margin: 0 auto;
     opacity: 0;
     animation-name: border_input;
     animation-delay: 1s;
     animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-  }
-  & #user_input_img{
+    animation-fill-mode: forwards; }
+  #sueta.active #user_input_img {
     display: block;
     display: block;
     margin: 0 auto;
@@ -312,11 +254,9 @@ body{
     animation-name: border_input;
     animation-delay: 1s;
     animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-  }
-}
+    animation-fill-mode: forwards; }
 
-#msg{
+#msg {
   width: 70%;
   height: 60px;
   position: absolute;
@@ -325,23 +265,21 @@ body{
   text-align: center;
   border: solid 4px #0075FF;
   border-radius: 12px;
-  text-shadow: 0 0 1px #00acee;
-  background-color: #0A0A0A;
+  text-shadow: 0 0 1px #FFC900;
+  background-color: #CCCCFF;
   font-size: 20px;
-  color: #00acee;
+  color: #FF9C00;
   transition: 1s;
-  z-index: 99;
-}
+  z-index: 99; }
 
 .msg p {
   font-weight: bold;
-  margin: 0;
-}
+  margin: 0; }
 
 .progress {
   width: 0;
   height: 5px;
-  background: #00acee;
+  background: #FF9C00;
   position: absolute;
   margin-top: 5px;
   bottom: 5px;
@@ -350,135 +288,110 @@ body{
   animation-name: progress;
   animation-duration: 5s;
   animation-fill-mode: forwards;
-  box-shadow:1px 0px 24px 2px #0075FF;
-}
+  box-shadow: 1px 0px 24px 2px #FFC900; }
 
 @keyframes progress {
   0% {
-    width: 0%;
-  }
+    width: 0%; }
   100% {
-    width: 95%;
-  }
-}
-
+    width: 95%; } }
 @keyframes border {
-  25%{
-    border-top:solid 3px #0075FF;
-  }
-  50%{
-    border-top:solid 3px #0075FF;
+  25% {
+    border-top: solid 3px #0075FF; }
+  50% {
+    border-top: solid 3px #0075FF;
+    border-right: solid 3px #0075FF; }
+  75% {
+    border-top: solid 3px #0075FF;
     border-right: solid 3px #0075FF;
-  }
-  75%{
-    border-top:solid 3px #0075FF;
-    border-right: solid 3px #0075FF;
-    border-bottom: solid 3px #0075FF;
-  }
-  100%{
-    border-top:solid 3px #0075FF;
+    border-bottom: solid 3px #0075FF; }
+  100% {
+    border-top: solid 3px #0075FF;
     border-right: solid 3px #0075FF;
     border-bottom: solid 3px #0075FF;
     border-left: solid 3px #0075FF;
-    box-shadow:1px 0px 24px 2px #0075FF;
-  }
-}
+    box-shadow: 1px 0px 24px 2px #0075FF; } }
 @keyframes border_input {
   0% {
     opacity: 0; }
   100% {
-    opacity: 1; }
-}
-
+    opacity: 1; } }
 @media screen and (max-width: 768px) {
   #poloska {
     width: 100%;
-    left: 0;
-  }
+    left: 0; }
+
   #user_menu {
-    display: none;
-  }
+    display: none; }
+
   #user_info_block {
     width: 100%;
-    left: 0;
-  }
+    left: 0; }
+
   #img_container {
-    left: 30%;
-  }
+    left: 30%; }
+
   #user_info {
     width: 98.3%;
     left: 0;
     top: 100%;
     margin-top: 95px;
-    text-align: center;
-  }
+    text-align: center; }
+
   #edit {
     top: 100%;
     left: 40%;
-    margin-top: 10%;
-    &:active{
-      top: 99%;
-    }
-  }
+    margin-top: 10%; }
+    #edit:active {
+      top: 99%; }
+
   #sueta.active {
     left: 14%;
     top: 90%;
-    transition-duration: 2s;
-  & #user_input{
-    width: 70%;
-  }
-  }
-  #about{
+    transition-duration: 2s; }
+    #sueta.active #user_input {
+      width: 70%; }
+
+  #about {
     position: absolute;
-    left: 15%;
-  }
-
-}
-
+    left: 15%; } }
 @media screen and (min-width: 768px) {
   #user_menu_lsz_btn {
-    display: none;
-  }
-  #user_menu_lsz.active {
-    display: none;
-  }
-}
+    display: none; }
 
+  #user_menu_lsz.active {
+    display: none; } }
 ::-webkit-scrollbar-button {
   background-repeat: no-repeat;
   width: 5px;
   height: 0;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 ::-webkit-scrollbar-track {
-  background-color: black;
+  background-color: #CCCCFF;
   cursor: pointer;
-  border-radius: 10px;
-}
+  border-radius: 10px; }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background-color: #939393;
+  background-color: #0075FF;
   background-image: url("https://yraaa.ru/_pu/24/59610063.png");
   background-position: center;
   background-repeat: no-repeat;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #0075FF;
-  cursor: pointer;
-}
+  background-color: #FF9C00;
+  cursor: pointer; }
 
 ::-webkit-resizer {
   background-repeat: no-repeat;
   width: 7px;
   height: 20px;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 ::-webkit-scrollbar {
   width: 10px;
-  cursor: pointer;
-}
+  cursor: pointer; }
+
+/*# sourceMappingURL=profile_dark.css.map */

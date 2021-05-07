@@ -20,6 +20,7 @@
     <style type="text/css">
         #user_info_block {
             background-image: url({{ u.profile.bg_image.url }});
+            background-size: 100%100%;
         }
     </style>
 
@@ -140,27 +141,19 @@
         <br>
         <br>
         {{ p_form.bio }}
+        <span>Profile Image</span>
+        <br>
         <br>
         <br>
         {{ p_form.image }}
-        <br>
+        <span>Background Image</span>
+
         {{ p_form.bg_image }}
         <button type="submit" id="user_input">Update</button>
     </form>
 
     <br><br>
 
-        <!-- Adaptive form
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        {{ u_form_ad.as_p }}
-        <br>
-        {{ p_form_ad.as_p }}
-
-        <button type="submit">Update</button>
-    </form>
--->
     </div>
 
 </body>

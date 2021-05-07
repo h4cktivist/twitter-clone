@@ -2,6 +2,27 @@ body{
 	background-color: #CCCCFF;
 	margin: 0 auto;
 	color: white;
+
+	& a {
+		color: #0075FF;
+		text-decoration:none;
+	}
+
+	& a:active {
+		color: white;
+		text-decoration:none;
+	}
+
+	& a:visited {
+		color: #0075FF;
+		text-decoration:none;
+	}
+
+	& a:hover {
+		color: #0000FF;
+		text-decoration: underline;
+		cursor: pointer;
+	}
 }
 
 @font-face {
@@ -441,6 +462,58 @@ body{
 	color: #0075FF;
 }
 
+#comment_block{
+
+}
+#comment_block.active{
+	display: block;
+}
+
+#comment_form{
+	text-align: center;
+	& textarea{
+		width: 80%;
+		height: 50px;
+		background: none;
+		border: solid 2px #0075FF;
+		border-radius: 5px;
+		transition: 1s;
+		outline: none;
+		color: black;
+	}
+	& textarea:focus{
+		height: 120px;
+	}
+	& button{
+		height: 30px;
+		width: 120px;
+		color: white;
+		background-color: #0075FF;
+		outline: none;
+		border: none;
+		border-radius: 20px;
+		font-family: "ZIX";
+		margin-right: 10px;
+		cursor: pointer;
+	}
+}
+
+#comments{
+	text-align: center;
+	color: black;
+	overflow-wrap: break-word;
+	& #comments_txt{
+		width: 70%;
+		margin-left: 15%;
+		margin-top: 20px;
+		border: solid 5px #0075FF;
+		border-radius: 7px;
+		border-top: solid 1px #0075FF;
+		border-bottom: solid 1px #0075FF;
+		overflow-wrap: break-word;
+	}
+}
+
 ::-webkit-scrollbar-button {
   background-repeat: no-repeat;
   width: 5px;
@@ -449,7 +522,7 @@ body{
 }
 
 ::-webkit-scrollbar-track {
-  background-color: black;
+  background-color: #CCCCFF;
   cursor: pointer;
   border-radius: 10px;
 }
@@ -464,7 +537,7 @@ body{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #0075FF;
+  background-color: #FF9C00;
   cursor: pointer;
 }
 
@@ -484,7 +557,7 @@ body{
 	#menu_lowsize_btn{
 	position: absolute;
 	left: 11%;
-	top: 0.5%;
+	top: 1%;
     background: #0075FF;
     padding: 5px;
     border-radius: 12px;
@@ -494,6 +567,11 @@ body{
 	&:hover{
 	background-color: #FFC900;
 	}
+	}
+
+	#menu_lowsize_btn.active{
+		left: 15%;
+		top: 1%;
 	}
 
 	#menu_lowsize_btn span{
@@ -537,7 +615,6 @@ body{
 
  	#post_image {
     height: 100%;
-    width: 50%;
   	}
 }
 
@@ -696,4 +773,50 @@ body{
 @keyframes switch {
 	0%{left: 50%;}
 	100%{left: 0;}
+}
+
+#msg{
+	width: 70%;
+	height: 60px;
+	position: absolute;
+	top: 20%;
+	left: 17%;
+	text-align: center;
+	border: solid 4px #0075FF;
+	border-radius: 12px;
+	text-shadow: 0 0 1px #FFC900;
+	background-color: #CCCCFF;
+	font-size: 20px;
+	color: #FF9C00;
+	transition: 1s;
+	z-index: 99999;
+}
+
+.msg p {
+	font-weight: bold;
+	margin: 0;
+}
+
+.progress {
+	width: 0;
+	height: 5px;
+	background: #FF9C00;
+	position: absolute;
+	margin-top: 5px;
+	bottom: 5px;
+	left: 3%;
+	border-radius: 12px;
+	animation-name: progress;
+	animation-duration: 5s;
+	animation-fill-mode: forwards;
+	box-shadow:1px 0 24px 2px #FFC900;
+}
+
+@keyframes progress {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 95%;
+	}
 }

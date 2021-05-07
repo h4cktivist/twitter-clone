@@ -196,9 +196,22 @@ body {
       box-shadow: 1px 0px 10px 2px #0075FF; }
     #sueta #user_input_bio:focus {
       box-shadow: 1px 0px 10px 2px #0075FF; }
+  #sueta #user_input_img {
+    display: none;
+    outline: none;
+    border: none;
+    resize: none;
+    border: solid 2px #0075FF;
+    border-radius: 10px;
+    background: none;
+    color: white; }
+    #sueta #user_input_img:hover {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
+    #sueta #user_input_img:focus {
+      box-shadow: 1px 0px 10px 2px #0075FF; }
 
 #sueta.active {
-  height: 500px;
+  height: 670px;
   font-size: 14px;
   transition-duration: 0.7s;
   border-radius: 20px;
@@ -227,6 +240,15 @@ body {
     animation-duration: 0.8s;
     animation-fill-mode: forwards; }
   #sueta.active #user_input_bio {
+    display: block;
+    margin: 0 auto;
+    opacity: 0;
+    animation-name: border_input;
+    animation-delay: 1s;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards; }
+  #sueta.active #user_input_img {
+    display: block;
     display: block;
     margin: 0 auto;
     opacity: 0;
@@ -319,7 +341,8 @@ body {
 
   #edit {
     top: 100%;
-    left: 40%; }
+    left: 40%;
+    margin-top: 10%; }
     #edit:active {
       top: 99%; }
 
@@ -328,7 +351,11 @@ body {
     top: 90%;
     transition-duration: 2s; }
     #sueta.active #user_input {
-      width: 70%; } }
+      width: 70%; }
+
+  #about {
+    position: absolute;
+    left: 15%; } }
 @media screen and (min-width: 768px) {
   #user_menu_lsz_btn {
     display: none; }
