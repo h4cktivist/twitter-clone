@@ -7,7 +7,11 @@
 
     <link rel="icon" href="/media/faviconca.ico" type="image/x-icon">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+    {% if request.session.theme == 'dark' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'profile_dark.css' %}">
+    {% else %}
+        <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+    {% endif %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'follow_unfollow.js' %}" defer></script>
 
@@ -138,6 +142,7 @@
         {{ u_form.email }}
         <br>
         <span>Biography</span>
+        <br>
         <br>
         <br>
         {{ p_form.bio }}
