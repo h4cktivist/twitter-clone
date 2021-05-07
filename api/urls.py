@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.apiOverview, name='api-overview'),
-    path('posts-list/', views.postsList, name='posts-list'),
-    path('post-detail/<int:id>', views.postDetail, name='post-detail'),
+    path('posts/', views.postsList, name='posts-list'),
+    path('posts/<int:id>/', views.postDetail, name='post-detail'),
 ]

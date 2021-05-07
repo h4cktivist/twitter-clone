@@ -46,7 +46,6 @@
             <li style="color: #0075FF;">Menu</li>
             <li><a href="{% url 'index' %}" style="color: #0075FF; text-decoration: underline;">My Profile</a></li>
             <li><a href="{% url 'profile' %}">Home</a></li>
-            <li><a href="{% url 'followers' %}">Followers</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
         </ul>
     </div>
@@ -63,7 +62,6 @@
             <li>Menu</li>
             <li><a href="{% url 'profile' %}" style="color: #0075FF; text-decoration: underline;">My Profile</a></li>
             <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'followers' %}">Followers</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
         </ul>
 
@@ -100,8 +98,7 @@
         <div id="user_info">
             <span>{{ u.username }}</span><br>
             <span>{{ u.email }}</span><br>
-            <span>Following {{ u.profile.following_count }} users</span>
-            <br>
+            <span>Following {{ u.profile.following_count }} users</span><br>
             <div id="about">
                 <span>About me: {{ u.profile.bio }}</span><br>
             </div>
@@ -143,7 +140,6 @@
         <span>Biography</span>
         <br>
         <br>
-        <br>
         {{ p_form.bio }}
         <span>Profile Image</span>
         <br>
@@ -151,6 +147,7 @@
         <br>
         {{ p_form.image }}
         <span>Background Image</span>
+
         {{ p_form.bg_image }}
         <button type="submit" id="user_input">Update</button>
     </form>

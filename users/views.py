@@ -32,32 +32,17 @@ def profile(request):
     context = {
         'u_form': user_upd_form,
         'p_form': profile_upd_form,
+        'u': request.user
     }
     return render(request, 'profile.html', context)
-
-
-@login_required(login_url='login')
-def followers(request):
-    followers = []
-
-    profiles = Profile.objects.all()
-    for p in profiles:
-        if request.user in p.following.all():
-            followers.append(p)
-
-    follows = request.user.profile.following.all()
-
-    context = {
-        'followers': followers,
-        'follows': follows
-    }
-    return render(request, 'followers.html', context)
 
 
 @login_required(login_url='login')
 def otherProfile(request, u_name):
     try:
         u = User.objects.get(username=u_name)
+        if u == request.user:
+            return redirect('profile')
     except:
         raise Http404('User not found')
 
@@ -71,12 +56,12 @@ def otherProfile(request, u_name):
         follow = False
 
     context = {
-        'user': u,
+        'u': u,
         'user_profile': p,
         'posts': posts,
         'follow': follow
     }
-    return render(request, 'otherprofile.html', context)
+    return render(request, 'profile.html', context)
 
 
 def follow_unfollow(request):

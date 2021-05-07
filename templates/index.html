@@ -50,7 +50,6 @@
             <li style="color: #0075FF;">Menu</li>
             <li><a href="{% url 'index' %}" style="color: #0075FF;">Home</a></li>
             <li><a href="{% url 'profile' %}">My Profile</a></li>
-            <li><a href="{% url 'followers' %}">Followers</a></li>
             <li><a href="{% url 'following_users_posts' %}">For you</a></li>
         </ul>
 
@@ -173,7 +172,6 @@
             <li>Menu</li>
             <li><a href="{% url 'index' %}" style="color: #0075FF;">Home</a></li>
             <li><a href="{% url 'profile' %}">My Profile</a></li>
-            <li><a href="{% url 'followers' %}">Followers</a></li>
             <li><a href="{% url 'following_users_posts' %}">For you</a></li>
         </ul>
 
@@ -273,6 +271,7 @@
         </form>
 
         <br>
+
        <!-- <a onclick="comment()">Показать комментарии</a> -->
         <!-- Comment add form -->
         <form method="post" action="{% url 'comment' p.id %}" id="comment_form">
@@ -287,15 +286,15 @@
                 {% for c in p.comment_set.all %}
             <br>
             <div id="comments_txt">
+
                     <p>
                         <a href="{% url 'otherprofile' p.user.username %}"><strong>{{ c.user }}</strong></a>
                         <p>{{ c.text }}</p>
                     </p>
-            </div>
                 {% endfor %}
             {% endif %}
         </div>
-        </div>
+
         <hr>
 
     {% endfor %}

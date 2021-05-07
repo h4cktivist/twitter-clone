@@ -10,15 +10,12 @@ from main.models import Post
 
 @api_view(['GET'])
 def apiOverview(request):
-    api_urls = {
-        'List': '/posts-list/',
-        'Detail': '/post-detail/<int:id>/',
-        'Create': '/post-create/',
-        'Update': '/post-update/<int:id>/',
-        'Delete': '/post-list/<int:id>/'
+    api_endpoints = {
+        'List': '/posts/',
+        'Detail': '/posts/{id}/',
     }
 
-    return Response(api_urls)
+    return Response(api_endpoints)
 
 
 @api_view(['GET'])

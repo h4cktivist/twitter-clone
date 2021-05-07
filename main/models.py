@@ -14,13 +14,6 @@ class Post(models.Model):
     liked = models.ManyToManyField(User, default=None, blank=True, related_name='liked_by_user')
 
     @property
-    def publish_date(self):
-        if self.date >= (timezone.now() - datetime.timedelta(hours=1)):
-            return f'{timezone.now().minute - self.date.minute} minutes ago'
-        else:
-            return self.date
-
-    @property
     def likes(self):
         return self.liked.all().count()
 
