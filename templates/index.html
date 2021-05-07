@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +51,7 @@
             <li><a href="{% url 'index' %}" style="color: #0075FF;">Home</a></li>
             <li><a href="{% url 'profile' %}">My Profile</a></li>
             <li><a href="{% url 'followers' %}">Followers</a></li>
+            <li><a href="{% url 'following_users_posts' %}">For you</a></li>
         </ul>
 
         <br>
@@ -89,8 +91,28 @@
 
 
     {% for message in messages %}
-        <p>{{ message }}</p> <!-- Уведомление о новом посте -->
+    <div id="msg">
+        <p>{{ message }}</p>
+        <div class="progress"></div>
+    </div>
     {% endfor %}
+
+    <script type="text/javascript">
+
+        let a = document.getElementById('msg').style;
+
+        function sneak() {
+            a.opacity = '0';
+            setTimeout(delsneak, 1000);
+        }
+
+        function delsneak() {
+            a.display = 'none';
+        }
+
+        setTimeout(sneak, 5000);
+
+    </script>
 
     {% if form %}
         <!-- Post creation form -->
@@ -152,6 +174,7 @@
             <li><a href="{% url 'index' %}" style="color: #0075FF;">Home</a></li>
             <li><a href="{% url 'profile' %}">My Profile</a></li>
             <li><a href="{% url 'followers' %}">Followers</a></li>
+            <li><a href="{% url 'following_users_posts' %}">For you</a></li>
         </ul>
 
     <!-- Kostil theme switcher by h4cktivist -->
@@ -194,13 +217,16 @@
                 <a href="{% url 'otherprofile' p.user.username %}" id="post_username">{{ p.user }}</a>
 
 
-        <span id="post_date">{{ p.publish_date }}</span>
+        <span id="post_date">{{ p.date|naturaltime }}</span>
 
         <br>
 
         <span id="post_text">{{ p.text }}</span>
-        
-        <a href="{% url 'detail' p.id %}" id="more">...More</a>
+
+        {% if p.user == request.user %}
+            <a href="{% url 'delete' p.id %}" id="more">Delete</a>
+            <a href="{% url 'edit' p.id %}" id="more">Edit</a>
+        {% endif %}
 
         <br>
 
@@ -211,22 +237,13 @@
         {% if p.image %}
         <div class="post_img_container">
 
-            <img id="post_image" src="{{ p.image.url }}">
+            <img id="post_image" src="{{ p.image.url }}" width="100%" height="100%">
 
         </div>
 
         {% endif %}
 
-<!-- Huita kakaya to
 
-        {% if p.was_published_recently %}
-            <div id="msg">
-                <p>New Post!</p>
-                <div class="progress"></div>
-            </div>
-        {% endif %}
-
-        -->
         <!-- Like button form -->
 
         <br>
@@ -255,6 +272,30 @@
 
         </form>
 
+        <br>
+       <!-- <a onclick="comment()">Показать комментарии</a> -->
+        <!-- Comment add form -->
+        <form method="post" action="{% url 'comment' p.id %}" id="comment_form">
+            {% csrf_token %}
+            <textarea required name="text" placeholder="Enter your comment" maxlength="500"></textarea></br>
+            <button type="submit">Comment</button>
+       </form>
+        <div id="comment_block">
+        <!-- Comments -->
+        <div id="comments">
+            {% if p.comment_set %}
+                {% for c in p.comment_set.all %}
+            <br>
+            <div id="comments_txt">
+                    <p>
+                        <a href="{% url 'otherprofile' p.user.username %}"><strong>{{ c.user }}</strong></a>
+                        <p>{{ c.text }}</p>
+                    </p>
+            </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        </div>
         <hr>
 
     {% endfor %}

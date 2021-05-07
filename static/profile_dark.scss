@@ -1,5 +1,5 @@
 body{
-  background-color: #0A0A0A;
+  background-color: #CCCCFF;
   margin: 0;
   overflow-x: hidden;
 }
@@ -16,7 +16,7 @@ body{
   left: 25.0%;
   width: 74.8%;
   height: 40px;
-  border: solid 1px #939393;
+  border: solid 2px #0075FF;
   text-align: center;
   & span{
     position: relative;
@@ -30,7 +30,7 @@ body{
 #user_menu {
   width: 24.9%;
   height: 99.7%;
-  border: solid 1px #939393;
+  border: solid 2px #0075FF;
   border-left: none;
   position: fixed;
   top: 0;
@@ -56,13 +56,13 @@ body{
   }
 
   & ul li a {
-    color: white;
+    color: #0075FF;
     text-decoration: none;
     cursor: pointer;
   }
 
   & ul li a:hover {
-    color: #0075FF;
+    color: #FF9C00;
   }
 }
 
@@ -72,8 +72,6 @@ body{
   position: absolute;
   left: 25.0%;
   top: 6.4%;
-  background-image: url("/media/sueta/suetaBK.jpg");
-  background-size: cover;
 }
 
 #img_container{
@@ -85,7 +83,7 @@ body{
     border-radius: 50%;
     width: 170px;
     height: 170px;
-}
+  }
 }
 
 #avatar.active{
@@ -172,8 +170,9 @@ body{
   height: 300px;
   position: absolute;
   top: 6.4%;
-  border: solid 1px #939393;
-  background-color: #0A0A0A;
+  left: 0.5%;
+  border: solid 2px #0075FF;
+  background-color: #CCCCFF;
 }
 
 #edit{
@@ -207,7 +206,7 @@ body{
   margin-bottom: 100px;
   font-size: 0;
   text-align: center;
-  color: white;
+  color: #0075FF;
 
   & #user_input{
     display: none;
@@ -218,7 +217,7 @@ body{
     border: solid 2px #0075FF;
     border-radius: 10px;
     background: none;
-    color: white;
+    color: black;
     &:hover{
       box-shadow:1px 0px 10px 2px #0075FF;
     }
@@ -234,7 +233,7 @@ body{
     border: solid 2px #0075FF;
     border-radius: 10px;
     background: none;
-    color: white;
+    color: black;
 
     &:hover {
       box-shadow: 1px 0px 10px 2px #0075FF;
@@ -252,7 +251,7 @@ body{
     border: solid 2px #0075FF;
     border-radius: 10px;
     background: none;
-    color: white;
+    color: black;
 
     &:hover {
       box-shadow: 1px 0px 10px 2px #0075FF;
@@ -325,10 +324,10 @@ body{
   text-align: center;
   border: solid 4px #0075FF;
   border-radius: 12px;
-  text-shadow: 0 0 1px #00acee;
-  background-color: #0A0A0A;
+  text-shadow: 0 0 1px #FFC900;
+  background-color: #CCCCFF;
   font-size: 20px;
-  color: #00acee;
+  color: #FF9C00;
   transition: 1s;
   z-index: 99;
 }
@@ -341,7 +340,7 @@ body{
 .progress {
   width: 0;
   height: 5px;
-  background: #00acee;
+  background: #FF9C00;
   position: absolute;
   margin-top: 5px;
   bottom: 5px;
@@ -350,7 +349,7 @@ body{
   animation-name: progress;
   animation-duration: 5s;
   animation-fill-mode: forwards;
-  box-shadow:1px 0px 24px 2px #0075FF;
+  box-shadow:1px 0px 24px 2px #FFC900;
 }
 
 @keyframes progress {
@@ -424,9 +423,9 @@ body{
     left: 14%;
     top: 90%;
     transition-duration: 2s;
-  & #user_input{
-    width: 70%;
-  }
+    & #user_input{
+      width: 70%;
+    }
   }
   #about{
     position: absolute;
@@ -452,14 +451,14 @@ body{
 }
 
 ::-webkit-scrollbar-track {
-  background-color: black;
+  background-color: #CCCCFF;
   cursor: pointer;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background-color: #939393;
+  background-color: #0075FF;
   background-image: url("https://yraaa.ru/_pu/24/59610063.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -467,7 +466,7 @@ body{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #0075FF;
+  background-color: #FF9C00;
   cursor: pointer;
 }
 

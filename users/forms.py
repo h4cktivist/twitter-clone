@@ -25,15 +25,20 @@ class UserUpdateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'placeholder': 'Username'})
-        self.fields['email'].widget.attrs.update({'placeholder': 'Email'})
+        self.fields['username'].widget.attrs.update({'placeholder': 'Username', 'id': 'user_input'})
+        self.fields['email'].widget.attrs.update({'placeholder': 'Email', 'id': 'user_input'})
 
 
 class ProfileUpdateForm(forms.ModelForm):
+    image = forms.ImageField(widget=forms.FileInput)
+    bg_image = forms.ImageField(widget=forms.FileInput)
+
     class Meta:
         model = Profile
         fields = ['image', 'bio', 'bg_image']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['bio'].widget.attrs.update({'placeholder': 'Say something about yourself'})
+        self.fields['bio'].widget.attrs.update({'placeholder': 'Say something about yourself', 'id': 'user_input_bio', 'maxlength': '280' })
+        self.fields['image'].widget.attrs.update({'id': 'user_input_img'})
+        self.fields['bg_image'].widget.attrs.update({'id': 'user_input'})

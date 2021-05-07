@@ -8,6 +8,8 @@
     <link rel="icon" href="/media/faviconca.ico" type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'follow_unfollow.js' %}" defer></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -17,7 +19,8 @@
 
     <style type="text/css">
         #user_info_block {
-            background-image: url({{ user.profile.bg_image.url }});
+            background-image: url({{ u.profile.bg_image.url }});
+            background-size: 100%100%;
         }
     </style>
 
@@ -90,18 +93,33 @@
         <div id="img_container">
 
 
-            <img id="avatar" src="{{ user.profile.image.url }}"><br>
+            <img id="avatar" src="{{ u.profile.image.url }}"><br>
 
         </div>
 
         <div id="user_info">
-            <span>Hello, {{ request.user }}</span><br>
-            <span>{{ request.user.email }}</span><br>
-            <span>You are following {{ user.profile.following_count }} users</span><br>
+            <span>{{ u.username }}</span><br>
+            <span>{{ u.email }}</span><br>
+            <span>Following {{ u.profile.following_count }} users</span>
+            <br>
             <div id="about">
-                <span>About me: {{ user.profile.bio }}</span><br>
+                <span>About me: {{ u.profile.bio }}</span><br>
             </div>
-            <button id="edit" onclick="openEditBlock()">Edit</button>
+            {% if u == request.user %}
+                <button id="edit" onclick="openEditBlock()">Edit</button>
+            {% else %}
+                <form method="post" action="{% url 'follow_unfollow'  %}" class="follow-unfollow-form" id="{{ user_profile.pk }}">
+                    {% csrf_token %}
+                    <input type="hidden" name="profile_pk" value="{{ user_profile.pk }}">
+                    <button id="edit" type="submit" class="btn{{ user_profile.pk }}">
+                        {% if follow %}
+                            Unfollow
+                        {% else %}
+                            Follow
+                        {% endif %}
+                    </button>
+                </form>
+            {% endif %}
         </div>
 
         <script type="text/javascript">
@@ -127,22 +145,18 @@
         <br>
         <br>
         {{ p_form.bio }}
+        <span>Profile Image</span>
+        <br>
+        <br>
+        <br>
+        {{ p_form.image }}
+        <span>Background Image</span>
+        {{ p_form.bg_image }}
         <button type="submit" id="user_input">Update</button>
     </form>
 
     <br><br>
 
-        <!-- Adaptive form
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        {{ u_form_ad.as_p }}
-        <br>
-        {{ p_form_ad.as_p }}
-
-        <button type="submit">Update</button>
-    </form>
--->
     </div>
 
 </body>

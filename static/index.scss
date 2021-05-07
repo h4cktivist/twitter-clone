@@ -2,6 +2,26 @@ body{
 	background-color: #0A0A0A;
 	margin: 0 auto;
 	color: white;
+
+& a {
+	color: white;
+	text-decoration:none;
+}
+
+& a:active {
+	color: white;
+	text-decoration:none;
+}
+
+& a:visited {
+	color: #0075FF;
+	text-decoration:none;
+}
+
+& a:hover {
+	color: white;
+	text-decoration: underline;
+}
 }
 
 @font-face {
@@ -264,6 +284,7 @@ body{
 	margin: 0 auto;
 	border-top: solid 1px #939393;
 	transition-duration: 1s;
+	overflow-wrap: break-word;
 }
 
 #post_block.active{
@@ -275,6 +296,7 @@ body{
 .post_info{
 	margin-top: 10px;
 	margin-left: 10px;
+	overflow-wrap: break-word;
 
 & a {
 	color: white;
@@ -321,12 +343,14 @@ body{
 #post_text{
 	margin-left: 20px;
 	font-family: 'Open Sans', sans-serif;
+	overflow-wrap: break-word;
 }
 
 .post_img_container{
 	width: 90%;
 	height: 500px;
 	margin: 0 auto;
+	background-color: red;
 }
 
 #post_image{
@@ -379,6 +403,51 @@ body{
 
 #like_color{
 	color: #0075FF;
+}
+
+#comment_form{
+	text-align: center;
+& textarea{
+	width: 80%;
+	height: 50px;
+	background: none;
+	border: solid 2px #0075FF;
+	border-radius: 5px;
+	transition: 1s;
+	outline: none;
+	color: white;
+}
+& textarea:focus{
+	height: 120px;
+}
+& button{
+	height: 30px;
+	width: 120px;
+	color: white;
+	background-color: #0075FF;
+	outline: none;
+	border: none;
+	border-radius: 20px;
+	font-family: "ZIX";
+	margin-right: 10px;
+	cursor: pointer;
+}
+}
+
+#comments{
+	text-align: center;
+	text-overflow: clip;
+& #comments_txt{
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 20px;
+	border: solid 5px #0075FF;
+	border-radius: 7px;
+	border-top: solid 1px #0075FF;
+	border-bottom: solid 1px #0075FF;
+	text-overflow: clip;
+	overflow-wrap: break-word;
+}
 }
 
 ::-webkit-scrollbar-button {
@@ -477,7 +546,6 @@ body{
 
  	#post_image {
     height: 100%;
-    width: 50%;
   	}
 }
 
@@ -651,17 +719,17 @@ body{
 	width: 70%;
 	height: 60px;
 	position: absolute;
-	top: 10%;
+	top: 20%;
 	left: 17%;
 	text-align: center;
 	border: solid 4px #0075FF;
 	border-radius: 12px;
 	text-shadow: 0 0 1px #00acee;
-	background-color: red;
+	background-color: #0A0A0A;
 	font-size: 20px;
 	color: #00acee;
 	transition: 1s;
-	z-index: 99;
+	z-index: 99999;
 }
 
 .msg p {
@@ -681,12 +749,12 @@ body{
 	animation-name: progress;
 	animation-duration: 5s;
 	animation-fill-mode: forwards;
-	box-shadow:1px 0px 24px 2px #0075FF;
+	box-shadow:1px 0 24px 2px #0075FF;
 }
 
 @keyframes progress {
 	0% {
-		width: 0%;
+		width: 0;
 	}
 	100% {
 		width: 95%;
