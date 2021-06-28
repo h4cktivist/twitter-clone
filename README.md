@@ -40,3 +40,9 @@ pip install - r requirements.txt
 
 python manage.py runserver
 ```
+### Run it with Docker
+```sh
+docker pull h4cktivist/twitter-clone
+docker run -p 8000:8000 h4cktivist/twitter-clone
+```
+[Link to DockerHub](https://hub.docker.com/r/h4cktivist/twitter-clone)
